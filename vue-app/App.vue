@@ -1,17 +1,17 @@
 <script setup>
+import { onMounted, useTemplateRef } from "vue";
 import { useMainStore } from "./stores/main";
+import { Scene } from "./Scene";
 
 const mainStore = useMainStore();
+
+const canvas = useTemplateRef("canvas");
+
+onMounted(() => {
+    new Scene(canvas.value);
+});
 </script>
 
 <template>
-    <h1 class="p-2 text-2xl">
-        <RouterLink to="/">
-            {{ mainStore.appName }}
-        </RouterLink>
-    </h1>
-    <main class="p-2">
-        <RouterView></RouterView>
-    </main>
-    <footer class="p-2 text-sm opacity-50">v{{ mainStore.appVersion }}</footer>
+    <canvas ref="canvas"></canvas>
 </template>
