@@ -16,16 +16,21 @@ export class Scene {
 
         this.renderer.setAnimationLoop((time) => this.animate(time));
 
-        const geometry = new THREE.BoxGeometry(1, 1, 1);
-        const material = new THREE.MeshBasicMaterial({ color: 0x00ff00 });
-        const cube = new THREE.Mesh(geometry, material);
-        this.scene.add(cube);
+        this.addMaison();
 
-        this.camera.position.z = 5;
+        this.camera.position.z = 384;
     }
 
     animate(time) {
-        // this.renderer.render(scene, camera);
         this.renderer.render(this.scene, this.camera);
+    }
+
+    addMaison() {
+        const geometry = new THREE.PlaneGeometry(256, 320);
+        const material = new THREE.MeshBasicMaterial({
+            color: 0xffffee,
+        });
+        const facade = new THREE.Mesh(geometry, material);
+        this.scene.add(facade);
     }
 }
