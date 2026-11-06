@@ -51,6 +51,8 @@ export class Scene {
                 const shape = flipShape(shapes[j]);
                 const geometry = new THREE.ShapeGeometry(shape);
                 const mesh = new THREE.Mesh(geometry, material);
+                mesh.name = path.userData.node.id;
+                mesh.dataset = { ...path.userData.node.dataset };
                 group.add(mesh);
             }
         }
