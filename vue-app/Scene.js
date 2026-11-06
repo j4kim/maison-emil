@@ -1,4 +1,6 @@
 import * as THREE from "three";
+import maison from "./maison.svg";
+import { SVGLoader } from "three/addons/loaders/SVGLoader.js";
 
 export class Scene {
     constructor(canvas) {
@@ -18,19 +20,34 @@ export class Scene {
 
         this.addMaison();
 
-        this.camera.position.z = 384;
+        this.camera.position.z = 1000;
     }
 
     animate(time) {
         this.renderer.render(this.scene, this.camera);
     }
 
-    addMaison() {
-        const geometry = new THREE.PlaneGeometry(256, 320);
-        const material = new THREE.MeshBasicMaterial({
-            color: 0xffffee,
-        });
-        const facade = new THREE.Mesh(geometry, material);
-        this.scene.add(facade);
+    async addMaison() {
+        const loader = new SVGLoader();
+        const data = await loader.loadAsync(maison);
+        const paths = data.paths;
+        const group = new THREE.Group();
+        for (let i = 0; i < paths.length; i++) {
+            const path = paths[i];
+            const material = new THREE.MeshBasicMaterial({
+                color: path.color,
+                side: THREE.DoubleSide,
+                depthWrite: false,
+            });
+            const shapes = path.toShapes();
+            console.log({ i, path, shapes });
+            for (let j = 0; j < shapes.length; j++) {
+                const shape = shapes[j];
+                const geometry = new THREE.ShapeGeometry(shape);
+                const mesh = new THREE.Mesh(geometry, material);
+                group.add(mesh);
+            }
+        }
+        this.scene.add(group);
     }
 }
