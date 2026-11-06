@@ -60,6 +60,15 @@ export class Scene {
                 const shape = flipShape(shapes[j]);
                 const geometry = new THREE.ShapeGeometry(shape);
                 const mesh = new THREE.Mesh(geometry, material);
+                const side = path.userData.node.dataset.side;
+                if (side) {
+                    geometry.computeBoundingBox();
+                    const bounds = geometry.boundingBox;
+                    const pivotX = side === "l" ? bounds.min.x : bounds.max.x;
+                    const pivotY = (bounds.min.y + bounds.max.y) / 2;
+                    geometry.translate(-pivotX, -pivotY, 0);
+                    mesh.position.set(pivotX, pivotY, 0);
+                }
                 mesh.name = path.userData.node.id;
                 mesh.dataset = { ...path.userData.node.dataset };
                 group.add(mesh);
@@ -79,7 +88,12 @@ export class Scene {
         );
         if (objectId > 0) {
             const obj = this.scene.getObjectById(objectId);
-            console.log(obj);
+            this.openWindow(obj);
         }
+    }
+
+    openWindow(mesh) {
+        console.log(mesh);
+        mesh.rotation.y = (mesh.dataset.side === "l" ? -1 : 1) * Math.PI;
     }
 }
