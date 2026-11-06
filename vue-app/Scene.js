@@ -2,6 +2,9 @@ import * as THREE from "three";
 import maison from "./maison.svg";
 import { SVGLoader } from "three/addons/loaders/SVGLoader.js";
 
+const HOME_H = 704;
+const HOME_W = 512;
+
 export class Scene {
     constructor(canvas) {
         this.canvas = canvas;
@@ -20,7 +23,9 @@ export class Scene {
 
         this.addMaison();
 
-        this.camera.position.z = 1000;
+        this.camera.position.z = 600;
+        this.camera.position.y = HOME_H / 3;
+        this.camera.rotation.x = Math.PI / 32;
     }
 
     animate(time) {
@@ -50,6 +55,7 @@ export class Scene {
                 group.add(mesh);
             }
         }
+        group.position.set(-HOME_W / 2, HOME_H);
         this.scene.add(group);
     }
 }
