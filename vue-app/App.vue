@@ -7,11 +7,17 @@ const mainStore = useMainStore();
 
 const canvas = useTemplateRef("canvas");
 
+let scene;
+
 onMounted(() => {
-    new Scene(canvas.value);
+    scene = new Scene(canvas.value);
 });
+
+function onClick(ev) {
+    scene.pick(ev);
+}
 </script>
 
 <template>
-    <canvas ref="canvas"></canvas>
+    <canvas ref="canvas" @click="onClick"></canvas>
 </template>

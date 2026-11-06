@@ -2,6 +2,7 @@ import * as THREE from "three";
 import maison from "./maison.svg";
 import { SVGLoader } from "three/addons/loaders/SVGLoader.js";
 import { flipShape } from "./utils";
+import { GPUPicker } from "three_gpu_picking";
 
 const HOME_H = 704;
 const HOME_W = 512;
@@ -19,6 +20,7 @@ export class Scene {
 
         this.renderer = new THREE.WebGLRenderer({ antialias: true, canvas });
         this.renderer.setSize(window.innerWidth, window.innerHeight);
+        this.renderer.setPixelRatio(window.devicePixelRatio);
 
         this.renderer.setAnimationLoop((time) => this.animate(time));
 
@@ -27,6 +29,13 @@ export class Scene {
         this.camera.position.z = 600;
         this.camera.position.y = HOME_H / 3;
         this.camera.rotation.x = Math.PI / 32;
+
+        this.picker = new GPUPicker(
+            THREE,
+            this.renderer,
+            this.scene,
+            this.camera,
+        );
     }
 
     animate(time) {
@@ -58,5 +67,13 @@ export class Scene {
         }
         group.position.set(-HOME_W / 2, HOME_H);
         this.scene.add(group);
+    }
+
+    pick(ev) {
+        var objectId = this.picker.pick(
+            ev.clientX * window.devicePixelRatio,
+            ev.clientY * window.devicePixelRatio,
+        );
+        console.log(objectId);
     }
 }
