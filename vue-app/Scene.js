@@ -86,7 +86,7 @@ export class Scene {
 
     async addWindowBackgrounds(group) {
         const material = new THREE.MeshBasicMaterial({
-            color: 0x001123,
+            color: 0x1a1715,
             side: THREE.DoubleSide,
         });
         this.windows.forEach(function (win, id) {
