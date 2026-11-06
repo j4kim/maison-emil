@@ -23,6 +23,8 @@ export class Scene {
 
         this.renderer.setAnimationLoop((time) => this.animate(time));
 
+        this.windows = [];
+
         this.addMaison();
 
         this.camera.position.z = 600;
@@ -35,8 +37,6 @@ export class Scene {
             this.scene,
             this.camera,
         );
-
-        this.windows = [];
     }
 
     animate(time) {
@@ -70,7 +70,6 @@ export class Scene {
                     const pivotY = (bounds.min.y + bounds.max.y) / 2;
                     geometry.translate(-pivotX, -pivotY, 0);
                     mesh.position.set(pivotX, pivotY, 0);
-                    mesh.windowId = windowId;
                     const win = this.windows[windowId] ?? {};
                     win[side] = mesh;
                     this.windows[windowId] = win;
@@ -82,13 +81,36 @@ export class Scene {
         }
         group.position.set(-HOME_W / 2, HOME_H);
         this.scene.add(group);
+        await this.addWindowBackgrounds(group);
+    }
+
+    async addWindowBackgrounds(group) {
+        const material = new THREE.MeshBasicMaterial({
+            color: 0x001123,
+            side: THREE.DoubleSide,
+        });
+        this.windows.forEach(function (win, id) {
+            const background = new THREE.Mesh(
+                new THREE.PlaneGeometry(32 + 25, 64 + 25),
+                material,
+            );
+            background.position.set(
+                (win.l.position.x + win.r.position.x) / 2,
+                (win.l.position.y + win.r.position.y) / 2,
+                -10,
+            );
+            background.pickTarget = true;
+            background.windowId = id;
+            background.renderOrder = -1;
+            group.add(background);
+        });
     }
 
     pick(ev) {
         var objectId = this.picker.pick(
             ev.clientX * window.devicePixelRatio,
             ev.clientY * window.devicePixelRatio,
-            (obj) => obj.windowId,
+            (obj) => obj.pickTarget,
         );
         if (objectId > 0) {
             const obj = this.scene.getObjectById(objectId);
