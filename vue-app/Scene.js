@@ -32,6 +32,9 @@ export class Scene {
         const data = await loader.loadAsync(maison);
         const paths = data.paths;
         const group = new THREE.Group();
+
+        const flip = (pts) => pts.map((p) => new THREE.Vector2(p.x, -p.y));
+
         for (let i = 0; i < paths.length; i++) {
             const path = paths[i];
             const material = new THREE.MeshBasicMaterial({
@@ -40,9 +43,8 @@ export class Scene {
                 depthWrite: false,
             });
             const shapes = path.toShapes();
-            console.log({ i, path, shapes });
             for (let j = 0; j < shapes.length; j++) {
-                const shape = shapes[j];
+                const shape = new THREE.Shape(flip(shapes[j].getPoints()));
                 const geometry = new THREE.ShapeGeometry(shape);
                 const mesh = new THREE.Mesh(geometry, material);
                 group.add(mesh);
