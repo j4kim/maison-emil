@@ -73,7 +73,13 @@ export class Scene {
         var objectId = this.picker.pick(
             ev.clientX * window.devicePixelRatio,
             ev.clientY * window.devicePixelRatio,
+            (obj) => {
+                return obj.name.startsWith("window-");
+            },
         );
-        console.log(objectId);
+        if (objectId > 0) {
+            const obj = this.scene.getObjectById(objectId);
+            console.log(obj);
+        }
     }
 }
