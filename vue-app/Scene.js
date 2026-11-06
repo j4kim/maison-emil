@@ -36,6 +36,8 @@ export class Scene {
             this.scene,
             this.camera,
         );
+
+        this.windows = [];
     }
 
     animate(time) {
@@ -60,14 +62,19 @@ export class Scene {
                 const shape = flipShape(shapes[j]);
                 const geometry = new THREE.ShapeGeometry(shape);
                 const mesh = new THREE.Mesh(geometry, material);
-                const side = path.userData.node.dataset.side;
-                if (side) {
+                const windowId = +path.userData.node.dataset.window;
+                if (windowId) {
+                    const side = path.userData.node.dataset.side;
                     geometry.computeBoundingBox();
                     const bounds = geometry.boundingBox;
                     const pivotX = side === "l" ? bounds.min.x : bounds.max.x;
                     const pivotY = (bounds.min.y + bounds.max.y) / 2;
                     geometry.translate(-pivotX, -pivotY, 0);
                     mesh.position.set(pivotX, pivotY, 0);
+                    mesh.windowId = windowId;
+                    const win = this.windows[windowId] ?? {};
+                    win[side] = mesh;
+                    this.windows[windowId] = win;
                 }
                 mesh.name = path.userData.node.id;
                 mesh.dataset = { ...path.userData.node.dataset };
@@ -82,18 +89,23 @@ export class Scene {
         var objectId = this.picker.pick(
             ev.clientX * window.devicePixelRatio,
             ev.clientY * window.devicePixelRatio,
-            (obj) => {
-                return obj.name.startsWith("window-");
-            },
+            (obj) => obj.windowId,
         );
         if (objectId > 0) {
             const obj = this.scene.getObjectById(objectId);
-            this.openWindow(obj);
+            this.openWindow(obj.windowId);
         }
     }
 
-    openWindow(mesh) {
-        console.log(mesh);
-        mesh.rotation.y = (mesh.dataset.side === "l" ? -1 : 1) * Math.PI;
+    openWindow(windowId) {
+        const win = this.windows[windowId];
+        if (win.isOpen) {
+            win.l.rotation.y = 0;
+            win.r.rotation.y = 0;
+        } else {
+            win.l.rotation.y = -1 * Math.PI;
+            win.r.rotation.y = Math.PI;
+        }
+        win.isOpen = !win.isOpen;
     }
 }
