@@ -1,7 +1,6 @@
 import * as THREE from "three";
 import maison from "./maison.svg";
 import { SVGLoader } from "three/addons/loaders/SVGLoader.js";
-import { flipShape } from "./utils";
 import { GPUPicker } from "three_gpu_picking";
 
 const HOME_H = 704;
@@ -59,8 +58,8 @@ export class Scene {
             });
             const shapes = path.toShapes();
             for (let j = 0; j < shapes.length; j++) {
-                const shape = flipShape(shapes[j]);
-                const geometry = new THREE.ShapeGeometry(shape);
+                const geometry = new THREE.ShapeGeometry(shapes[j]);
+                geometry.scale(1, -1, 1);
                 const mesh = new THREE.Mesh(geometry, material);
                 const windowId = +path.userData.node.dataset.window;
                 if (windowId) {
