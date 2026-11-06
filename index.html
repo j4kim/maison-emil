@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Maison – volets Three.js</title>
+  <style>
+    html, body { margin: 0; height: 100%; overflow: hidden; background: #cfd8e3; font-family: system-ui, sans-serif; }
+    #ui { position: fixed; top: 12px; left: 12px; display: flex; gap: 6px; align-items: center;
+          background: rgba(255,255,255,.85); padding: 8px 10px; border-radius: 8px; }
+    #ui input { width: 60px; }
+  </style>
+  <script type="importmap">
+  {
+    "imports": {
+      "three": "https://cdn.jsdelivr.net/npm/three@0.170.0/build/three.module.js",
+      "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.170.0/examples/jsm/"
+    }
+  }
+  </script>
+</head>
+<body>
+  <div id="ui">
+    Fenêtre
+    <input id="n" type="number" min="1" max="24" value="1">
+    <button id="open">Ouvrir</button>
+    <button id="close">Fermer</button>
+    <button id="all">Tout ouvrir</button>
+    <button id="none">Tout fermer</button>
+  </div>
+
+  <script type="module">
+    import * as THREE from 'three';
+    import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
+    import { House } from './House.js';
+
+    const renderer = new THREE.WebGLRenderer({ antialias: true });
+    renderer.setPixelRatio(devicePixelRatio);
+    renderer.setSize(innerWidth, innerHeight);
+    document.body.appendChild(renderer.domElement);
+
+    const scene = new THREE.Scene();
+    scene.background = new THREE.Color(0xcfd8e3);
+
+    const camera = new THREE.PerspectiveCamera(40, innerWidth / innerHeight, 0.1, 100);
+    camera.position.set(2, 0.5, 10);
+
+    const controls = new OrbitControls(camera, renderer.domElement);
+    controls.target.set(0, 0, 0);
+
+    scene.add(new THREE.HemisphereLight(0xffffff, 0x8899aa, 1.4));
+    const sun = new THREE.DirectionalLight(0xffffff, 2);
+    sun.position.set(3, 4, 8);
+    scene.add(sun);
+
+    const house = await House.load('./maison.svg');
+    scene.add(house);
+
+    // API programmatique
+    window.house = house;
+    window.openWindow = (n) => house.openWindow(n);
+    window.closeWindow = (n) => house.closeWindow(n);
+
+    const $ = (id) => document.getElementById(id);
+    const idx = () => parseInt($('n').value, 10);
+    $('open').onclick = () => house.openWindow(idx());
+    $('close').onclick = () => house.closeWindow(idx());
+    $('all').onclick = () => house.openAll();
+    $('none').onclick = () => house.closeAll();
+
+    const clock = new THREE.Clock();
+    renderer.setAnimationLoop(() => {
+      house.update(clock.getDelta());
+      controls.update();
+      renderer.render(scene, camera);
+    });
+
+    addEventListener('resize', () => {
+      camera.aspect = innerWidth / innerHeight;
+      camera.updateProjectionMatrix();
+      renderer.setSize(innerWidth, innerHeight);
+    });
+  </script>
+</body>
+</html>
