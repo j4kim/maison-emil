@@ -1,7 +1,7 @@
 import * as THREE from "three";
 import maison from "./maison.svg";
 import { SVGLoader } from "three/addons/loaders/SVGLoader.js";
-import { flip } from "./utils";
+import { flipShape } from "./utils";
 
 const HOME_H = 704;
 const HOME_W = 512;
@@ -48,7 +48,7 @@ export class Scene {
             });
             const shapes = path.toShapes();
             for (let j = 0; j < shapes.length; j++) {
-                const shape = new THREE.Shape(flip(shapes[j].getPoints()));
+                const shape = flipShape(shapes[j]);
                 const geometry = new THREE.ShapeGeometry(shape);
                 const mesh = new THREE.Mesh(geometry, material);
                 group.add(mesh);
