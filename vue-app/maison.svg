@@ -1,37 +1,112 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
-<svg width="100%" height="100%" viewBox="0 0 512 640" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;">
-    <path id="maison" d="M48,272L0,272L96,112L256,16L416,112L512,272L464,272L464,592L48,592L48,272Z" style="fill:#fff;"/>
-    <g id="_3" serif:id="3">
-        <rect x="80" y="208" width="32" height="48" style="fill:#ebebeb;"/>
-        <rect x="144" y="208" width="32" height="48" style="fill:#ebebeb;"/>
-        <rect x="208" y="208" width="32" height="48" style="fill:#ebebeb;"/>
-        <rect x="272" y="208" width="32" height="48" style="fill:#ebebeb;"/>
-        <rect x="336" y="208" width="32" height="48" style="fill:#ebebeb;"/>
-        <rect x="400" y="208" width="32" height="48" style="fill:#ebebeb;"/>
+<svg width="100%" height="100%" viewBox="0 0 512 704" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:affinity="https://www.affinity.studio/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;">
+    <path id="facade" d="M512,128L512,704L0,704L0,128L512,128ZM392,576L360,576L360,640L392,640L392,576ZM232,192L200,192L200,256L232,256L232,192ZM232,448L200,448L200,512L232,512L232,448ZM232,320L200,320L200,384L232,384L232,320ZM232,576L200,576L200,640L232,640L232,576ZM152,192L120,192L120,256L152,256L152,192ZM152,448L120,448L120,512L152,512L152,448ZM152,320L120,320L120,384L152,384L152,320ZM152,576L120,576L120,640L152,640L152,576ZM72,192L40,192L40,256L72,256L72,192ZM72,448L40,448L40,512L72,512L72,448ZM72,320L40,320L40,384L72,384L72,320ZM72,576L40,576L40,640L72,640L72,576ZM392,192L360,192L360,256L392,256L392,192ZM392,448L360,448L360,512L392,512L392,448ZM392,320L360,320L360,384L392,384L392,320ZM472,192L440,192L440,256L472,256L472,192ZM472,448L440,448L440,512L472,512L472,448ZM472,320L440,320L440,384L472,384L472,320ZM472,576L440,576L440,640L472,640L472,576ZM312,192L280,192L280,256L312,256L312,192ZM312,448L280,448L280,512L312,512L312,448ZM312,320L280,320L280,384L312,384L312,320ZM312,576L280,576L280,640L312,640L312,576Z" style="fill:#edebde;"/>
+    <g id="windows">
+        <g id="floor-4">
+            <g>
+                <rect x="40" y="192" width="16" height="64" style="fill:#786055;"/>
+                <rect x="56" y="192" width="16" height="64" style="fill:#786055;"/>
+            </g>
+            <g>
+                <rect x="120" y="192" width="16" height="64" style="fill:#786055;"/>
+                <rect x="136" y="192" width="16" height="64" style="fill:#786055;"/>
+            </g>
+            <g>
+                <rect x="200" y="192" width="16" height="64" style="fill:#786055;"/>
+                <rect x="216" y="192" width="16" height="64" style="fill:#786055;"/>
+            </g>
+            <g>
+                <rect x="280" y="192" width="16" height="64" style="fill:#786055;"/>
+                <rect x="296" y="192" width="16" height="64" style="fill:#786055;"/>
+            </g>
+            <g>
+                <rect x="360" y="192" width="16" height="64" style="fill:#786055;"/>
+                <rect x="376" y="192" width="16" height="64" style="fill:#786055;"/>
+            </g>
+            <g>
+                <rect x="440" y="192" width="16" height="64" style="fill:#786055;"/>
+                <rect x="456" y="192" width="16" height="64" style="fill:#786055;"/>
+            </g>
+        </g>
+        <g id="floor-3">
+            <g>
+                <rect x="40" y="320" width="16" height="64" style="fill:#786055;"/>
+                <rect x="56" y="320" width="16" height="64" style="fill:#786055;"/>
+            </g>
+            <g>
+                <rect x="120" y="320" width="16" height="64" style="fill:#786055;"/>
+                <rect x="136" y="320" width="16" height="64" style="fill:#786055;"/>
+            </g>
+            <g>
+                <rect x="200" y="320" width="16" height="64" style="fill:#786055;"/>
+                <rect x="216" y="320" width="16" height="64" style="fill:#786055;"/>
+            </g>
+            <g>
+                <rect x="280" y="320" width="16" height="64" style="fill:#786055;"/>
+                <rect x="296" y="320" width="16" height="64" style="fill:#786055;"/>
+            </g>
+            <g>
+                <rect x="360" y="320" width="16" height="64" style="fill:#786055;"/>
+                <rect x="376" y="320" width="16" height="64" style="fill:#786055;"/>
+            </g>
+            <g>
+                <rect x="440" y="320" width="16" height="64" style="fill:#786055;"/>
+                <rect x="456" y="320" width="16" height="64" style="fill:#786055;"/>
+            </g>
+        </g>
+        <g id="floor-2">
+            <g>
+                <rect x="40" y="448" width="16" height="64" style="fill:#786055;"/>
+                <rect x="56" y="448" width="16" height="64" style="fill:#786055;"/>
+            </g>
+            <g>
+                <rect x="120" y="448" width="16" height="64" style="fill:#786055;"/>
+                <rect x="136" y="448" width="16" height="64" style="fill:#786055;"/>
+            </g>
+            <g>
+                <rect x="200" y="448" width="16" height="64" style="fill:#786055;"/>
+                <rect x="216" y="448" width="16" height="64" style="fill:#786055;"/>
+            </g>
+            <g>
+                <rect x="280" y="448" width="16" height="64" style="fill:#786055;"/>
+                <rect x="296" y="448" width="16" height="64" style="fill:#786055;"/>
+            </g>
+            <g>
+                <rect x="360" y="448" width="16" height="64" style="fill:#786055;"/>
+                <rect x="376" y="448" width="16" height="64" style="fill:#786055;"/>
+            </g>
+            <g>
+                <rect x="440" y="448" width="16" height="64" style="fill:#786055;"/>
+                <rect x="456" y="448" width="16" height="64" style="fill:#786055;"/>
+            </g>
+        </g>
+        <g id="floor-1">
+            <g>
+                <rect x="40" y="576" width="16" height="64" style="fill:#786055;"/>
+                <rect x="56" y="576" width="16" height="64" style="fill:#786055;"/>
+            </g>
+            <g>
+                <rect x="120" y="576" width="16" height="64" style="fill:#786055;"/>
+                <rect x="136" y="576" width="16" height="64" style="fill:#786055;"/>
+            </g>
+            <g>
+                <rect x="200" y="576" width="16" height="64" style="fill:#786055;"/>
+                <rect x="216" y="576" width="16" height="64" style="fill:#786055;"/>
+            </g>
+            <g>
+                <rect x="280" y="576" width="16" height="64" style="fill:#786055;"/>
+                <rect x="296" y="576" width="16" height="64" style="fill:#786055;"/>
+            </g>
+            <g>
+                <rect x="360" y="576" width="16" height="64" style="fill:#786055;"/>
+                <rect x="376" y="576" width="16" height="64" style="fill:#786055;"/>
+            </g>
+            <g>
+                <rect x="440" y="576" width="16" height="64" style="fill:#786055;"/>
+                <rect x="456" y="576" width="16" height="64" style="fill:#786055;"/>
+            </g>
+        </g>
     </g>
-    <g id="_2" serif:id="2">
-        <rect x="80" y="304" width="32" height="48" style="fill:#ebebeb;"/>
-        <rect x="144" y="304" width="32" height="48" style="fill:#ebebeb;"/>
-        <rect x="208" y="304" width="32" height="48" style="fill:#ebebeb;"/>
-        <rect x="272" y="304" width="32" height="48" style="fill:#ebebeb;"/>
-        <rect x="336" y="304" width="32" height="48" style="fill:#ebebeb;"/>
-        <rect x="400" y="304" width="32" height="48" style="fill:#ebebeb;"/>
-    </g>
-    <g id="_1" serif:id="1">
-        <rect x="80" y="400" width="32" height="48" style="fill:#ebebeb;"/>
-        <rect x="144" y="400" width="32" height="48" style="fill:#ebebeb;"/>
-        <rect x="208" y="400" width="32" height="48" style="fill:#ebebeb;"/>
-        <rect x="272" y="400" width="32" height="48" style="fill:#ebebeb;"/>
-        <rect x="336" y="400" width="32" height="48" style="fill:#ebebeb;"/>
-        <rect x="400" y="400" width="32" height="48" style="fill:#ebebeb;"/>
-    </g>
-    <g id="_0" serif:id="0">
-        <rect x="80" y="496" width="32" height="48" style="fill:#ebebeb;"/>
-        <rect x="144" y="496" width="32" height="48" style="fill:#ebebeb;"/>
-        <rect x="208" y="496" width="32" height="48" style="fill:#ebebeb;"/>
-        <rect x="272" y="496" width="32" height="48" style="fill:#ebebeb;"/>
-        <rect x="336" y="496" width="32" height="48" style="fill:#ebebeb;"/>
-        <rect x="400" y="496" width="32" height="48" style="fill:#ebebeb;"/>
-    </g>
+    <path id="roof" d="M0,128L512,128L256,0L0,128Z" style="fill:#bb8e79;"/>
 </svg>
