@@ -1,6 +1,7 @@
 import * as THREE from "three";
 import maison from "./maison.svg";
 import { SVGLoader } from "three/addons/loaders/SVGLoader.js";
+import { flip } from "./utils";
 
 const HOME_H = 704;
 const HOME_W = 512;
@@ -37,8 +38,6 @@ export class Scene {
         const data = await loader.loadAsync(maison);
         const paths = data.paths;
         const group = new THREE.Group();
-
-        const flip = (pts) => pts.map((p) => new THREE.Vector2(p.x, -p.y));
 
         for (let i = 0; i < paths.length; i++) {
             const path = paths[i];
