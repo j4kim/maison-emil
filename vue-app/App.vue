@@ -21,7 +21,7 @@ onMounted(() => {
 function onClick(ev) {
     const windowId = scene.pickWindow(ev);
     if (!windowId) return;
-    const win = scene.windows[windowId];
+    const win = scene.house.windows[windowId];
     const target = win.isOpen ? 0 : Math.PI;
     gsap.to(win.l.rotation, { y: -target, duration: 1 });
     gsap.to(win.r.rotation, { y: target, duration: 1 });
