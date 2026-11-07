@@ -23,5 +23,8 @@ const mainStore = useMainStore();
         >
             ouvrir
         </button>
+        <button class="bg-white px-1" @click="mainStore.openAll">
+            ouvrir tout
+        </button>
     </div>
 </template>

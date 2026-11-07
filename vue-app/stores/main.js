@@ -30,6 +30,12 @@ export const useMainStore = defineStore("main", () => {
         openWindows.value.push(focused.value);
     }
 
+    function openAll() {
+        scene.value.house.windows.forEach((win) => {
+            scene.value.open(win);
+        });
+    }
+
     return {
         appVersion: document.body.dataset.appVersion,
         appName: document.body.dataset.appName,
@@ -40,5 +46,6 @@ export const useMainStore = defineStore("main", () => {
         focusWindow,
         zoomOut,
         open,
+        openAll,
     };
 });
