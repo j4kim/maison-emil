@@ -2,6 +2,7 @@ import * as THREE from "three";
 import { HOME_H, HOME_W, WIN_H, WIN_W } from "./Scene";
 import { SVGLoader } from "three/examples/jsm/Addons.js";
 import { getShutterData } from "./utils";
+import interiorUrl from "./interior.jpg";
 
 export class House extends THREE.Group {
     constructor(svgUrl) {
@@ -60,8 +61,11 @@ export class House extends THREE.Group {
     }
 
     addWindowBackgrounds() {
+        const loader = new THREE.TextureLoader();
+        const texture = loader.load(interiorUrl);
+        texture.colorSpace = THREE.SRGBColorSpace;
         const material = new THREE.MeshBasicMaterial({
-            color: 0x1a1715,
+            map: texture,
             side: THREE.DoubleSide,
         });
         this.windows.forEach((win, id) => {
