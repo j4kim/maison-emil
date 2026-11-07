@@ -14,10 +14,7 @@ const mainStore = useMainStore();
             retour
         </button>
         <button
-            v-if="
-                mainStore.focused &&
-                !mainStore.openWindows.includes(mainStore.focused)
-            "
+            v-if="mainStore.focused && !mainStore.isOpen(mainStore.focused)"
             class="bg-white px-1"
             @click="mainStore.openWindow"
         >

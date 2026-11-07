@@ -23,6 +23,10 @@ export const useMainStore = defineStore("main", () => {
         });
     }
 
+    function isOpen(windowId) {
+        return openWindows.value.includes(windowId);
+    }
+
     /**
      * @param ev {PointerEvent}
      */
@@ -30,7 +34,9 @@ export const useMainStore = defineStore("main", () => {
         const windowId = scene.value.pickWindow(ev);
         if (!windowId) return;
         const win = scene.value.house.windows[windowId];
-        scene.value.focusWindow(win);
+        isOpen(windowId)
+            ? scene.value.insideWindow(win)
+            : scene.value.focusWindow(win);
         focused.value = windowId;
     }
 

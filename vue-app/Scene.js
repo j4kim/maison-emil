@@ -76,13 +76,16 @@ export class Scene {
         return { x, y };
     }
 
-    focusWindow(win, duration = 2, ease = "power1.out") {
+    focusWindow(win, z = 80, duration = 2, ease = "power1.out") {
         const { x, y } = this.getWindowCenter(win);
-        const z = 80;
         return gsap
             .timeline({ defaults: { duration, ease } })
             .to(this.camera.position, { x, y, z }, 0)
             .to(this.camera.rotation, { x: 0 }, 0);
+    }
+
+    insideWindow(win, duration = 2, ease = "power1.out") {
+        return this.focusWindow(win, 20, duration, ease);
     }
 
     zoomOut(duration = 2, ease = "power1.inOut") {
