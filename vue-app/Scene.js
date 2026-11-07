@@ -2,9 +2,12 @@ import * as THREE from "three";
 import maisonSvg from "./maison.svg";
 import { GPUPicker } from "three_gpu_picking";
 import { House } from "./House";
+import gsap from "gsap";
 
 export const HOME_H = 704; // todo : get values from House
 export const HOME_W = 512;
+export const WIN_W = 32;
+export const WIN_H = 64;
 
 export class Scene {
     constructor(canvas) {
@@ -58,5 +61,18 @@ export class Scene {
             const obj = this.scene.getObjectById(objectId);
             return obj.windowId;
         }
+    }
+
+    getWindowCenter(win) {
+        const x = this.house.root.position.x + win.l.position.x + WIN_W / 2;
+        const y = this.house.root.position.y + win.l.position.y;
+        return { x, y };
+    }
+
+    focusWindow(win) {
+        const { x, y } = this.getWindowCenter(win);
+        const z = 80;
+        gsap.to(this.camera.position, { x, y, z, duration: 1 });
+        gsap.to(this.camera.rotation, { x: 0, duration: 1 });
     }
 }

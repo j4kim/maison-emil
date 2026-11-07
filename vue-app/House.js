@@ -1,5 +1,5 @@
 import * as THREE from "three";
-import { HOME_H, HOME_W } from "./Scene";
+import { HOME_H, HOME_W, WIN_H, WIN_W } from "./Scene";
 import { SVGLoader } from "three/examples/jsm/Addons.js";
 
 export class House extends THREE.Group {
@@ -67,7 +67,7 @@ export class House extends THREE.Group {
         });
         this.windows.forEach((win, id) => {
             const background = new THREE.Mesh(
-                new THREE.PlaneGeometry(32 + 25, 64 + 25),
+                new THREE.PlaneGeometry(WIN_W + 25, WIN_H + 25),
                 material,
             );
             background.position.set(
