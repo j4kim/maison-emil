@@ -62,11 +62,16 @@ export class House extends THREE.Group {
     }
 
     addWindowBackgrounds() {
-        const material = new THREE.MeshBasicMaterial({
-            color: 0x1a1715,
-            side: THREE.DoubleSide,
-        });
         this.windows.forEach((win, id) => {
+            const material = new THREE.MeshBasicMaterial({
+                color: new THREE.Color().setHSL(0, 0.3, 0.7),
+                side: THREE.DoubleSide,
+            });
+            material.color.offsetHSL(
+                0.2 * Math.random(),
+                0.3 * Math.random(),
+                0.2 * Math.random(),
+            );
             const background = new THREE.Mesh(
                 new THREE.PlaneGeometry(WIN_W + 25, WIN_H + 25),
                 material,
