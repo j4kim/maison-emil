@@ -25,6 +25,7 @@ export class Scene {
         this.renderer = new THREE.WebGLRenderer({ antialias: true, canvas });
         this.renderer.setSize(window.innerWidth, window.innerHeight);
         this.renderer.setPixelRatio(window.devicePixelRatio);
+        this.renderer.setClearColor(0x000000, 0);
 
         this.renderer.setAnimationLoop((time) => this.animate(time));
 

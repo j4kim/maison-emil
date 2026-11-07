@@ -22,6 +22,7 @@
         data-app-version="{{ config('app.version') }}"
         data-app-name="{{ config('app.name') }}"
         data-user="{{ json_encode(auth()->user()) }}"
+        class="bg-[#ccddff]"
     >
         <div id="app"></div>
     </body>
