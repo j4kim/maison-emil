@@ -1,114 +1,114 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
 <svg width="100%" height="100%" viewBox="0 0 512 768" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:affinity="https://www.affinity.studio/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;">
-    <path id="facade" d="M512,192L512,768L0,768L0,192L512,192ZM392,640L360,640L360,704L392,704L392,640ZM232,256L200,256L200,320L232,320L232,256ZM232,512L200,512L200,576L232,576L232,512ZM232,384L200,384L200,448L232,448L232,384ZM232,640L200,640L200,704L232,704L232,640ZM152,256L120,256L120,320L152,320L152,256ZM152,512L120,512L120,576L152,576L152,512ZM152,384L120,384L120,448L152,448L152,384ZM152,640L120,640L120,704L152,704L152,640ZM72,256L40,256L40,320L72,320L72,256ZM72,512L40,512L40,576L72,576L72,512ZM72,384L40,384L40,448L72,448L72,384ZM72,640L40,640L40,704L72,704L72,640ZM392,256L360,256L360,320L392,320L392,256ZM392,512L360,512L360,576L392,576L392,512ZM392,384L360,384L360,448L392,448L392,384ZM472,256L440,256L440,320L472,320L472,256ZM472,512L440,512L440,576L472,576L472,512ZM472,384L440,384L440,448L472,448L472,384ZM472,640L440,640L440,704L472,704L472,640ZM312,256L280,256L280,320L312,320L312,256ZM312,512L280,512L280,576L312,576L312,512ZM312,384L280,384L280,448L312,448L312,384ZM312,640L280,640L280,704L312,704L312,640Z" style="fill:#edebde;"/>
+    <path id="facade" d="M512,192L512,768L0,768L0,192L512,192ZM392,640L360,640L360,704L392,704L392,640ZM232,256L200,256L200,320L232,320L232,256ZM232,512L200,512L200,576L232,576L232,512ZM232,384L200,384L200,448L232,448L232,384ZM232,640L200,640L200,704L232,704L232,640ZM152,256L120,256L120,320L152,320L152,256ZM152,512L120,512L120,576L152,576L152,512ZM152,384L120,384L120,448L152,448L152,384ZM152,640L120,640L120,704L152,704L152,640ZM72,256L40,256L40,320L72,320L72,256ZM72,512L40,512L40,576L72,576L72,512ZM72,384L40,384L40,448L72,448L72,384ZM72,640L40,640L40,704L72,704L72,640ZM392,256L360,256L360,320L392,320L392,256ZM392,512L360,512L360,576L392,576L392,512ZM392,384L360,384L360,448L392,448L392,384ZM472,256L440,256L440,320L472,320L472,256ZM472,512L440,512L440,576L472,576L472,512ZM472,384L440,384L440,448L472,448L472,384ZM472,640L440,640L440,704L472,704L472,640ZM312,256L280,256L280,320L312,320L312,256ZM312,512L280,512L280,576L312,576L312,512ZM312,384L280,384L280,448L312,448L312,384ZM312,640L280,640L280,704L312,704L312,640Z" style="fill:#f2f0a1;"/>
     <g id="windows">
         <g id="floor-1">
             <g id="window-24">
-                <rect id="window-24-l" x="440" y="640" width="16" height="64" style="fill:#786055;"/>
-                <rect id="window-24-r" x="456" y="640" width="16" height="64" style="fill:#786055;"/>
+                <rect id="window-24-l" x="440" y="640" width="16" height="64" style="fill:#d69e62;"/>
+                <rect id="window-24-r" x="456" y="640" width="16" height="64" style="fill:#d69e62;"/>
             </g>
             <g id="window-23">
-                <rect id="window-23-l" x="360" y="640" width="16" height="64" style="fill:#786055;"/>
-                <rect id="window-23-r" x="376" y="640" width="16" height="64" style="fill:#786055;"/>
+                <rect id="window-23-l" x="360" y="640" width="16" height="64" style="fill:#ad5b47;"/>
+                <rect id="window-23-r" x="376" y="640" width="16" height="64" style="fill:#ad5b47;"/>
             </g>
             <g id="window-22">
-                <rect id="window-22-l" x="280" y="640" width="16" height="64" style="fill:#786055;"/>
-                <rect id="window-22-r" x="296" y="640" width="16" height="64" style="fill:#786055;"/>
+                <rect id="window-22-l" x="280" y="640" width="16" height="64" style="fill:#f09ea2;"/>
+                <rect id="window-22-r" x="296" y="640" width="16" height="64" style="fill:#f09ea2;"/>
             </g>
             <g id="window-21">
-                <rect id="window-21-l" x="200" y="640" width="16" height="64" style="fill:#786055;"/>
-                <rect id="window-21-r" x="216" y="640" width="16" height="64" style="fill:#786055;"/>
+                <rect id="window-21-l" x="200" y="640" width="16" height="64" style="fill:#d1b6e4;"/>
+                <rect id="window-21-r" x="216" y="640" width="16" height="64" style="fill:#d1b6e4;"/>
             </g>
             <g id="window-20">
-                <rect id="window-20-l" x="120" y="640" width="16" height="64" style="fill:#786055;"/>
-                <rect id="window-20-r" x="136" y="640" width="16" height="64" style="fill:#786055;"/>
+                <rect id="window-20-l" x="120" y="640" width="16" height="64" style="fill:#e76478;"/>
+                <rect id="window-20-r" x="136" y="640" width="16" height="64" style="fill:#e76478;"/>
             </g>
             <g id="window-19">
-                <rect id="window-19-l" x="40" y="640" width="16" height="64" style="fill:#786055;"/>
-                <rect id="window-19-r" x="56" y="640" width="16" height="64" style="fill:#786055;"/>
+                <rect id="window-19-l" x="40" y="640" width="16" height="64" style="fill:#ad5b47;"/>
+                <rect id="window-19-r" x="56" y="640" width="16" height="64" style="fill:#ad5b47;"/>
             </g>
         </g>
         <g id="floor-2">
             <g id="window-18">
-                <rect id="window-18-l" x="440" y="512" width="16" height="64" style="fill:#786055;"/>
-                <rect id="window-18-r" x="456" y="512" width="16" height="64" style="fill:#786055;"/>
+                <rect id="window-18-l" x="440" y="512" width="16" height="64" style="fill:#d1b6e4;"/>
+                <rect id="window-18-r" x="456" y="512" width="16" height="64" style="fill:#d1b6e4;"/>
             </g>
             <g id="window-17">
-                <rect id="window-17-l" x="360" y="512" width="16" height="64" style="fill:#786055;"/>
-                <rect id="window-17-r" x="376" y="512" width="16" height="64" style="fill:#786055;"/>
+                <rect id="window-17-l" x="360" y="512" width="16" height="64" style="fill:#d69e62;"/>
+                <rect id="window-17-r" x="376" y="512" width="16" height="64" style="fill:#d69e62;"/>
             </g>
             <g id="window-16">
-                <rect id="window-16-l" x="280" y="512" width="16" height="64" style="fill:#786055;"/>
-                <rect id="window-16-r" x="296" y="512" width="16" height="64" style="fill:#786055;"/>
+                <rect id="window-16-l" x="280" y="512" width="16" height="64" style="fill:#78cfe5;"/>
+                <rect id="window-16-r" x="296" y="512" width="16" height="64" style="fill:#78cfe5;"/>
             </g>
             <g id="window-15">
-                <rect id="window-15-l" x="200" y="512" width="16" height="64" style="fill:#786055;"/>
-                <rect id="window-15-r" x="216" y="512" width="16" height="64" style="fill:#786055;"/>
+                <rect id="window-15-l" x="200" y="512" width="16" height="64" style="fill:#f09ea2;"/>
+                <rect id="window-15-r" x="216" y="512" width="16" height="64" style="fill:#f09ea2;"/>
             </g>
             <g id="window-14">
-                <rect id="window-14-l" x="120" y="512" width="16" height="64" style="fill:#786055;"/>
-                <rect id="window-14-r" x="136" y="512" width="16" height="64" style="fill:#786055;"/>
+                <rect id="window-14-l" x="120" y="512" width="16" height="64" style="fill:#78cfe5;"/>
+                <rect id="window-14-r" x="136" y="512" width="16" height="64" style="fill:#78cfe5;"/>
             </g>
             <g id="window-13">
-                <rect id="window-13-l" x="40" y="512" width="16" height="64" style="fill:#786055;"/>
-                <rect id="window-13-r" x="56" y="512" width="16" height="64" style="fill:#786055;"/>
+                <rect id="window-13-l" x="40" y="512" width="16" height="64" style="fill:#d69e62;"/>
+                <rect id="window-13-r" x="56" y="512" width="16" height="64" style="fill:#d69e62;"/>
             </g>
         </g>
         <g id="floor-3">
             <g id="window-12">
-                <rect id="window-12-l" x="440" y="384" width="16" height="64" style="fill:#786055;"/>
-                <rect id="window-12-r" x="456" y="384" width="16" height="64" style="fill:#786055;"/>
+                <rect id="window-12-l" x="440" y="384" width="16" height="64" style="fill:#d69e62;"/>
+                <rect id="window-12-r" x="456" y="384" width="16" height="64" style="fill:#d69e62;"/>
             </g>
             <g id="window-11">
-                <rect id="window-11-l" x="360" y="384" width="16" height="64" style="fill:#786055;"/>
-                <rect id="window-11-r" x="376" y="384" width="16" height="64" style="fill:#786055;"/>
+                <rect id="window-11-l" x="360" y="384" width="16" height="64" style="fill:#f09ea2;"/>
+                <rect id="window-11-r" x="376" y="384" width="16" height="64" style="fill:#f09ea2;"/>
             </g>
             <g id="window-10">
-                <rect id="window-10-l" x="280" y="384" width="16" height="64" style="fill:#786055;"/>
-                <rect id="window-10-r" x="296" y="384" width="16" height="64" style="fill:#786055;"/>
+                <rect id="window-10-l" x="280" y="384" width="16" height="64" style="fill:#ad5b47;"/>
+                <rect id="window-10-r" x="296" y="384" width="16" height="64" style="fill:#ad5b47;"/>
             </g>
             <g id="window-9">
-                <rect id="window-9-l" x="200" y="384" width="16" height="64" style="fill:#786055;"/>
-                <rect id="window-9-r" x="216" y="384" width="16" height="64" style="fill:#786055;"/>
+                <rect id="window-9-l" x="200" y="384" width="16" height="64" style="fill:#d1b6e4;"/>
+                <rect id="window-9-r" x="216" y="384" width="16" height="64" style="fill:#d1b6e4;"/>
             </g>
             <g id="window-8">
-                <rect id="window-8-l" x="120" y="384" width="16" height="64" style="fill:#786055;"/>
-                <rect id="window-8-r" x="136" y="384" width="16" height="64" style="fill:#786055;"/>
+                <rect id="window-8-l" x="120" y="384" width="16" height="64" style="fill:#e76478;"/>
+                <rect id="window-8-r" x="136" y="384" width="16" height="64" style="fill:#e76478;"/>
             </g>
             <g id="window-7">
-                <rect id="window-7-l" x="40" y="384" width="16" height="64" style="fill:#786055;"/>
-                <rect id="window-7-r" x="56" y="384" width="16" height="64" style="fill:#786055;"/>
+                <rect id="window-7-l" x="40" y="384" width="16" height="64" style="fill:#78cfe5;"/>
+                <rect id="window-7-r" x="56" y="384" width="16" height="64" style="fill:#78cfe5;"/>
             </g>
         </g>
         <g id="floor-4">
             <g id="window-6">
-                <rect id="window-6-l" x="440" y="256" width="16" height="64" style="fill:#786055;"/>
-                <rect id="window-6-r" x="456" y="256" width="16" height="64" style="fill:#786055;"/>
+                <rect id="window-6-l" x="440" y="256" width="16" height="64" style="fill:#e76478;"/>
+                <rect id="window-6-r" x="456" y="256" width="16" height="64" style="fill:#e76478;"/>
             </g>
             <g id="window-5">
-                <rect id="window-5-l" x="360" y="256" width="16" height="64" style="fill:#786055;"/>
-                <rect id="window-5-r" x="376" y="256" width="16" height="64" style="fill:#786055;"/>
+                <rect id="window-5-l" x="360" y="256" width="16" height="64" style="fill:#ad5b47;"/>
+                <rect id="window-5-r" x="376" y="256" width="16" height="64" style="fill:#ad5b47;"/>
             </g>
             <g id="window-4">
-                <rect id="window-4-l" x="280" y="256" width="16" height="64" style="fill:#786055;"/>
-                <rect id="window-4-r" x="296" y="256" width="16" height="64" style="fill:#786055;"/>
+                <rect id="window-4-l" x="280" y="256" width="16" height="64" style="fill:#d1b6e4;"/>
+                <rect id="window-4-r" x="296" y="256" width="16" height="64" style="fill:#d1b6e4;"/>
             </g>
             <g id="window-3">
-                <rect id="window-3-l" x="200" y="256" width="16" height="64" style="fill:#786055;"/>
-                <rect id="window-3-r" x="216" y="256" width="16" height="64" style="fill:#786055;"/>
+                <rect id="window-3-l" x="200" y="256" width="16" height="64" style="fill:#d69e62;"/>
+                <rect id="window-3-r" x="216" y="256" width="16" height="64" style="fill:#d69e62;"/>
             </g>
             <g id="window-2">
-                <rect id="window-2-l" x="120" y="256" width="16" height="64" style="fill:#786055;"/>
-                <rect id="window-2-r" x="136" y="256" width="16" height="64" style="fill:#786055;"/>
+                <rect id="window-2-l" x="120" y="256" width="16" height="64" style="fill:#78cfe5;"/>
+                <rect id="window-2-r" x="136" y="256" width="16" height="64" style="fill:#78cfe5;"/>
             </g>
             <g id="window-1">
-                <rect id="window-1-l" x="40" y="256" width="16" height="64" style="fill:#786055;"/>
-                <rect id="window-1-r" x="56" y="256" width="16" height="64" style="fill:#786055;"/>
+                <rect id="window-1-l" x="40" y="256" width="16" height="64" style="fill:#f09ea2;"/>
+                <rect id="window-1-r" x="56" y="256" width="16" height="64" style="fill:#f09ea2;"/>
             </g>
         </g>
     </g>
-    <path id="roof" d="M0,192L512,192L256,64L0,192Z" style="fill:#bb8e79;"/>
+    <path id="roof" d="M0,192L512,192L256,64L0,192Z" style="fill:#edb880;"/>
     <g>
         <path d="M150.1,35.4L152.5,67.1C152.6,67.5 152.5,67.8 152.2,68.1C152,68.4 151.7,68.6 151.3,68.8C151,68.9 150.6,69 150.2,69C149.9,69 149.5,68.8 149.3,68.6L126.9,45.2L137.7,74.1C137.8,74.5 137.8,74.9 137.6,75.2C137.4,75.6 137.1,75.8 136.7,75.9C136.3,76 136,76 135.6,75.9C135.2,75.8 134.9,75.5 134.7,75.1L122.3,41.4C122.1,40.9 122.1,40.4 122.3,40.1C122.5,39.7 122.8,39.4 123.1,39.2C123.5,39 123.9,38.9 124.4,38.9C124.9,38.9 125.3,39 125.7,39.2L149.1,63.8L146.6,30.8C146.5,30.4 146.6,29.9 146.8,29.6C147.1,29.2 147.5,28.9 147.9,28.7C148.3,28.5 148.8,28.5 149.2,28.5C149.7,28.6 150,28.9 150.3,29.3L167.9,60.5C168.1,60.9 168.1,61.3 168,61.6C167.8,62 167.5,62.2 167.2,62.4C166.9,62.6 166.5,62.7 166.1,62.6C165.7,62.6 165.3,62.4 165.1,62L150.1,35.4Z" style="fill-rule:nonzero;"/>
         <path d="M179.3,34.3C179.2,33.7 179.3,33.3 179.5,33C179.7,32.6 180,32.4 180.4,32.3C180.8,32.2 181.1,32.2 181.5,32.3C181.8,32.5 182.1,32.8 182.3,33.4C183.5,36.8 184.6,40.2 185.7,43.7C186.8,47.2 188.1,50.7 189.4,54.3C189.5,54.8 189.4,55.1 189.2,55.5C189,55.8 188.7,56 188.3,56.1C188,56.2 187.6,56.2 187.3,56.1C186.9,56 186.6,55.7 186.4,55.3L185.3,52.3C184.7,53.5 183.7,54.4 182.4,55.2C181.2,56 179.6,56.4 177.6,56.5C176.4,56.6 175.3,56.5 174.4,56.1C173.4,55.7 172.6,55.2 171.8,54.5C171.1,53.9 170.5,53.1 169.9,52.2C169.4,51.3 169,50.3 168.8,49.2C168.5,48 168.4,46.8 168.5,45.5C168.6,44.3 168.9,43.1 169.4,42C169.9,40.9 170.6,39.9 171.5,39.1C172.4,38.2 173.6,37.6 174.9,37.2C175.9,37 176.9,36.9 177.8,37C178.8,37.2 179.7,37.4 180.5,37.8C180.3,37.3 180.1,36.7 179.9,36.1C179.7,35.5 179.5,34.9 179.3,34.3ZM177.4,53.4C178.4,53.5 179.2,53.3 179.9,52.9C180.7,52.5 181.3,52 181.8,51.4C182.4,50.7 182.8,50 183,49.1C183.3,48.3 183.4,47.4 183.4,46.6L182.2,43.2C181.6,42.2 180.8,41.4 179.9,40.9C179,40.4 178.1,40.2 177.2,40.2C176.3,40.1 175.5,40.3 174.6,40.7C173.8,41.2 173.1,41.7 172.6,42.5C172,43.2 171.6,44.2 171.5,45.3C171.3,46.3 171.5,47.6 171.9,48.9C172.3,50.1 173,51.1 173.9,51.9C174.8,52.8 176,53.3 177.4,53.4Z" style="fill-rule:nonzero;"/>
