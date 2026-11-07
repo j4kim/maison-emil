@@ -2,6 +2,7 @@ import { useStorage } from "@vueuse/core";
 import { defineStore } from "pinia";
 import { ref } from "vue";
 import { Scene } from "../Scene";
+import gsap from "gsap";
 
 export const useMainStore = defineStore("main", () => {
     const user = ref(JSON.parse(document.body.dataset.user));
@@ -14,10 +15,11 @@ export const useMainStore = defineStore("main", () => {
     async function initScene(canvas) {
         scene.value = new Scene(canvas);
         await scene.value.init();
-        scene.value.zoomOut(4);
+        const introTl = gsap.timeline();
+        introTl.add(scene.value.zoomOut(4), 0);
         openWindows.value.forEach((windowId) => {
             const win = scene.value.house.windows[windowId];
-            scene.value.openWindow(win);
+            introTl.add(scene.value.openWindow(win), 2 + 2 * Math.random());
         });
     }
 
