@@ -106,7 +106,11 @@ export class Scene {
         });
     }
 
-    pick(ev) {
+    /**
+     * @param {PointerEvent} ev
+     * @returns {?number} windowId
+     */
+    pickWindow(ev) {
         var objectId = this.picker.pick(
             ev.clientX * window.devicePixelRatio,
             ev.clientY * window.devicePixelRatio,
@@ -114,19 +118,7 @@ export class Scene {
         );
         if (objectId > 0) {
             const obj = this.scene.getObjectById(objectId);
-            this.openWindow(obj.windowId);
+            return obj.windowId;
         }
-    }
-
-    openWindow(windowId) {
-        const win = this.windows[windowId];
-        if (win.isOpen) {
-            win.l.rotation.y = 0;
-            win.r.rotation.y = 0;
-        } else {
-            win.l.rotation.y = -1 * Math.PI;
-            win.r.rotation.y = Math.PI;
-        }
-        win.isOpen = !win.isOpen;
     }
 }
