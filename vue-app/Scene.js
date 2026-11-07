@@ -8,6 +8,8 @@ export const HOME_H = 704; // todo : get values from House
 export const HOME_W = 512;
 export const WIN_W = 32;
 export const WIN_H = 64;
+export const DEFAULT_CAMERA_POS = [0, HOME_H / 3, 600];
+export const DEFAULT_CAMERA_ROT = [Math.PI / 32, 0, 0];
 
 export class Scene {
     constructor(canvas) {
@@ -31,9 +33,8 @@ export class Scene {
             this.scene.add(this.house);
         });
 
-        this.camera.position.z = 600;
-        this.camera.position.y = HOME_H / 3;
-        this.camera.rotation.x = Math.PI / 32;
+        this.camera.position.set(...DEFAULT_CAMERA_POS);
+        this.camera.rotation.set(...DEFAULT_CAMERA_ROT);
 
         this.picker = new GPUPicker(
             THREE,
@@ -74,5 +75,14 @@ export class Scene {
         const z = 80;
         gsap.to(this.camera.position, { x, y, z, duration: 1 });
         gsap.to(this.camera.rotation, { x: 0, duration: 1 });
+    }
+
+    zoomOut() {
+        const [x, y, z] = DEFAULT_CAMERA_POS;
+        gsap.to(this.camera.position, { x, y, z, duration: 1 });
+        gsap.to(this.camera.rotation, {
+            x: DEFAULT_CAMERA_ROT[0],
+            duration: 1,
+        });
     }
 }
