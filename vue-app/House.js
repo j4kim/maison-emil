@@ -1,6 +1,7 @@
 import * as THREE from "three";
 import { HOME_H, HOME_W, WIN_H, WIN_W } from "./Scene";
 import { SVGLoader } from "three/examples/jsm/Addons.js";
+import { Text } from "troika-three-text";
 import { getShutterData } from "./utils";
 
 export class House extends THREE.Group {
@@ -21,6 +22,7 @@ export class House extends THREE.Group {
     async load() {
         await this.loadSvg();
         this.addWindowBackgrounds();
+        this.addWindowNumbers();
         this.root.position.set(-HOME_W / 2, HOME_H);
     }
 
@@ -71,13 +73,33 @@ export class House extends THREE.Group {
             );
             background.position.set(
                 (win.l.position.x + win.r.position.x) / 2,
-                (win.l.position.y + win.r.position.y) / 2,
+                win.l.position.y,
                 -10,
             );
             background.pickTarget = true;
             background.windowId = id;
             background.renderOrder = -1;
             this.root.add(background);
+        });
+    }
+
+    addWindowNumbers() {
+        this.windows.forEach((win, id) => {
+            const x = (win.l.position.x + win.r.position.x) / 2;
+            const y = win.l.position.y;
+
+            const txt = new Text();
+
+            txt.text = id;
+            txt.fontSize = 10;
+            txt.anchorX = "center";
+            txt.anchorY = -WIN_H * 0.8;
+            txt.position.x = x;
+            txt.position.y = y;
+            txt.position.z = 1;
+            txt.color = 0x00000;
+
+            this.root.add(txt);
         });
     }
 }
