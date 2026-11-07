@@ -85,4 +85,9 @@ export class Scene {
             duration: 1,
         });
     }
+
+    open(win) {
+        gsap.to(win.l.rotation, { y: -Math.PI, duration: 1 });
+        gsap.to(win.r.rotation, { y: Math.PI, duration: 1 });
+    }
 }

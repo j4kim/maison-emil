@@ -5,6 +5,8 @@ export const useMainStore = defineStore("main", () => {
     const user = ref(JSON.parse(document.body.dataset.user));
 
     const scene = ref(null);
+    const focused = ref(null);
+    const openWindows = ref([]);
 
     /**
      * @param ev {PointerEvent}
@@ -14,10 +16,18 @@ export const useMainStore = defineStore("main", () => {
         if (!windowId) return;
         const win = scene.value.house.windows[windowId];
         scene.value.focusWindow(win);
+        focused.value = windowId;
     }
 
     function zoomOut() {
         scene.value.zoomOut();
+        focused.value = null;
+    }
+
+    function open() {
+        const win = scene.value.house.windows[focused.value];
+        scene.value.open(win);
+        openWindows.value.push(focused.value);
     }
 
     return {
@@ -25,7 +35,10 @@ export const useMainStore = defineStore("main", () => {
         appName: document.body.dataset.appName,
         user,
         scene,
+        focused,
+        openWindows,
         focusWindow,
         zoomOut,
+        open,
     };
 });
