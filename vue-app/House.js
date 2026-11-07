@@ -1,6 +1,7 @@
 import * as THREE from "three";
 import { HOME_H, HOME_W, WIN_H, WIN_W } from "./Scene";
 import { SVGLoader } from "three/examples/jsm/Addons.js";
+import { getShutterData } from "./utils";
 
 export class House extends THREE.Group {
     constructor(svgUrl) {
@@ -40,9 +41,8 @@ export class House extends THREE.Group {
                 const geometry = new THREE.ShapeGeometry(shapes[j]);
                 geometry.scale(1, -1, 1);
                 const mesh = new THREE.Mesh(geometry, material);
-                const windowId = +path.userData.node.dataset.window;
+                const { windowId, side } = getShutterData(path.userData.node);
                 if (windowId) {
-                    const side = path.userData.node.dataset.side;
                     geometry.computeBoundingBox();
                     const bounds = geometry.boundingBox;
                     const pivotX = side === "l" ? bounds.min.x : bounds.max.x;
@@ -54,7 +54,6 @@ export class House extends THREE.Group {
                     this.windows[windowId] = win;
                 }
                 mesh.name = path.userData.node.id;
-                mesh.dataset = { ...path.userData.node.dataset };
                 this.root.add(mesh);
             }
         }

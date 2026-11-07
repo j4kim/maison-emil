@@ -1,110 +1,110 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:affinity="https://www.affinity.studio/" width="100%" height="100%" viewBox="0 0 512 704" version="1.1" xml:space="preserve" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;">
+<svg width="100%" height="100%" viewBox="0 0 512 704" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:affinity="https://www.affinity.studio/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;">
     <path id="facade" d="M512,128L512,704L0,704L0,128L512,128ZM392,576L360,576L360,640L392,640L392,576ZM232,192L200,192L200,256L232,256L232,192ZM232,448L200,448L200,512L232,512L232,448ZM232,320L200,320L200,384L232,384L232,320ZM232,576L200,576L200,640L232,640L232,576ZM152,192L120,192L120,256L152,256L152,192ZM152,448L120,448L120,512L152,512L152,448ZM152,320L120,320L120,384L152,384L152,320ZM152,576L120,576L120,640L152,640L152,576ZM72,192L40,192L40,256L72,256L72,192ZM72,448L40,448L40,512L72,512L72,448ZM72,320L40,320L40,384L72,384L72,320ZM72,576L40,576L40,640L72,640L72,576ZM392,192L360,192L360,256L392,256L392,192ZM392,448L360,448L360,512L392,512L392,448ZM392,320L360,320L360,384L392,384L392,320ZM472,192L440,192L440,256L472,256L472,192ZM472,448L440,448L440,512L472,512L472,448ZM472,320L440,320L440,384L472,384L472,320ZM472,576L440,576L440,640L472,640L472,576ZM312,192L280,192L280,256L312,256L312,192ZM312,448L280,448L280,512L312,512L312,448ZM312,320L280,320L280,384L312,384L312,320ZM312,576L280,576L280,640L312,640L312,576Z" style="fill:#edebde;"/>
     <g id="windows">
         <g id="floor-1">
             <g id="window-24">
-                <rect x="440" y="576" width="16" height="64" style="fill:#786055;" id="window-24-l" data-floor="1" data-side="l" data-window="24"/>
-                <rect x="456" y="576" width="16" height="64" style="fill:#786055;" id="window-24-r" data-floor="1" data-side="r" data-window="24"/>
+                <rect id="window-24-l" x="440" y="576" width="16" height="64" style="fill:#786055;"/>
+                <rect id="window-24-r" x="456" y="576" width="16" height="64" style="fill:#786055;"/>
             </g>
             <g id="window-23">
-                <rect x="360" y="576" width="16" height="64" style="fill:#786055;" id="window-23-l" data-floor="1" data-side="l" data-window="23"/>
-                <rect x="376" y="576" width="16" height="64" style="fill:#786055;" id="window-23-r" data-floor="1" data-side="r" data-window="23"/>
+                <rect id="window-23-l" x="360" y="576" width="16" height="64" style="fill:#786055;"/>
+                <rect id="window-23-r" x="376" y="576" width="16" height="64" style="fill:#786055;"/>
             </g>
             <g id="window-22">
-                <rect x="280" y="576" width="16" height="64" style="fill:#786055;" id="window-22-l" data-floor="1" data-side="l" data-window="22"/>
-                <rect x="296" y="576" width="16" height="64" style="fill:#786055;" id="window-22-r" data-floor="1" data-side="r" data-window="22"/>
+                <rect id="window-22-l" x="280" y="576" width="16" height="64" style="fill:#786055;"/>
+                <rect id="window-22-r" x="296" y="576" width="16" height="64" style="fill:#786055;"/>
             </g>
             <g id="window-21">
-                <rect x="200" y="576" width="16" height="64" style="fill:#786055;" id="window-21-l" data-floor="1" data-side="l" data-window="21"/>
-                <rect x="216" y="576" width="16" height="64" style="fill:#786055;" id="window-21-r" data-floor="1" data-side="r" data-window="21"/>
+                <rect id="window-21-l" x="200" y="576" width="16" height="64" style="fill:#786055;"/>
+                <rect id="window-21-r" x="216" y="576" width="16" height="64" style="fill:#786055;"/>
             </g>
             <g id="window-20">
-                <rect x="120" y="576" width="16" height="64" style="fill:#786055;" id="window-20-l" data-floor="1" data-side="l" data-window="20"/>
-                <rect x="136" y="576" width="16" height="64" style="fill:#786055;" id="window-20-r" data-floor="1" data-side="r" data-window="20"/>
+                <rect id="window-20-l" x="120" y="576" width="16" height="64" style="fill:#786055;"/>
+                <rect id="window-20-r" x="136" y="576" width="16" height="64" style="fill:#786055;"/>
             </g>
             <g id="window-19">
-                <rect x="40" y="576" width="16" height="64" style="fill:#786055;" id="window-19-l" data-floor="1" data-side="l" data-window="19"/>
-                <rect x="56" y="576" width="16" height="64" style="fill:#786055;" id="window-19-r" data-floor="1" data-side="r" data-window="19"/>
+                <rect id="window-19-l" x="40" y="576" width="16" height="64" style="fill:#786055;"/>
+                <rect id="window-19-r" x="56" y="576" width="16" height="64" style="fill:#786055;"/>
             </g>
         </g>
         <g id="floor-2">
             <g id="window-18">
-                <rect x="440" y="448" width="16" height="64" style="fill:#786055;" id="window-18-l" data-floor="2" data-side="l" data-window="18"/>
-                <rect x="456" y="448" width="16" height="64" style="fill:#786055;" id="window-18-r" data-floor="2" data-side="r" data-window="18"/>
+                <rect id="window-18-l" x="440" y="448" width="16" height="64" style="fill:#786055;"/>
+                <rect id="window-18-r" x="456" y="448" width="16" height="64" style="fill:#786055;"/>
             </g>
             <g id="window-17">
-                <rect x="360" y="448" width="16" height="64" style="fill:#786055;" id="window-17-l" data-floor="2" data-side="l" data-window="17"/>
-                <rect x="376" y="448" width="16" height="64" style="fill:#786055;" id="window-17-r" data-floor="2" data-side="r" data-window="17"/>
+                <rect id="window-17-l" x="360" y="448" width="16" height="64" style="fill:#786055;"/>
+                <rect id="window-17-r" x="376" y="448" width="16" height="64" style="fill:#786055;"/>
             </g>
             <g id="window-16">
-                <rect x="280" y="448" width="16" height="64" style="fill:#786055;" id="window-16-l" data-floor="2" data-side="l" data-window="16"/>
-                <rect x="296" y="448" width="16" height="64" style="fill:#786055;" id="window-16-r" data-floor="2" data-side="r" data-window="16"/>
+                <rect id="window-16-l" x="280" y="448" width="16" height="64" style="fill:#786055;"/>
+                <rect id="window-16-r" x="296" y="448" width="16" height="64" style="fill:#786055;"/>
             </g>
             <g id="window-15">
-                <rect x="200" y="448" width="16" height="64" style="fill:#786055;" id="window-15-l" data-floor="2" data-side="l" data-window="15"/>
-                <rect x="216" y="448" width="16" height="64" style="fill:#786055;" id="window-15-r" data-floor="2" data-side="r" data-window="15"/>
+                <rect id="window-15-l" x="200" y="448" width="16" height="64" style="fill:#786055;"/>
+                <rect id="window-15-r" x="216" y="448" width="16" height="64" style="fill:#786055;"/>
             </g>
             <g id="window-14">
-                <rect x="120" y="448" width="16" height="64" style="fill:#786055;" id="window-14-l" data-floor="2" data-side="l" data-window="14"/>
-                <rect x="136" y="448" width="16" height="64" style="fill:#786055;" id="window-14-r" data-floor="2" data-side="r" data-window="14"/>
+                <rect id="window-14-l" x="120" y="448" width="16" height="64" style="fill:#786055;"/>
+                <rect id="window-14-r" x="136" y="448" width="16" height="64" style="fill:#786055;"/>
             </g>
             <g id="window-13">
-                <rect x="40" y="448" width="16" height="64" style="fill:#786055;" id="window-13-l" data-floor="2" data-side="l" data-window="13"/>
-                <rect x="56" y="448" width="16" height="64" style="fill:#786055;" id="window-13-r" data-floor="2" data-side="r" data-window="13"/>
+                <rect id="window-13-l" x="40" y="448" width="16" height="64" style="fill:#786055;"/>
+                <rect id="window-13-r" x="56" y="448" width="16" height="64" style="fill:#786055;"/>
             </g>
         </g>
         <g id="floor-3">
             <g id="window-12">
-                <rect x="440" y="320" width="16" height="64" style="fill:#786055;" id="window-12-l" data-floor="3" data-side="l" data-window="12"/>
-                <rect x="456" y="320" width="16" height="64" style="fill:#786055;" id="window-12-r" data-floor="3" data-side="r" data-window="12"/>
+                <rect id="window-12-l" x="440" y="320" width="16" height="64" style="fill:#786055;"/>
+                <rect id="window-12-r" x="456" y="320" width="16" height="64" style="fill:#786055;"/>
             </g>
             <g id="window-11">
-                <rect x="360" y="320" width="16" height="64" style="fill:#786055;" id="window-11-l" data-floor="3" data-side="l" data-window="11"/>
-                <rect x="376" y="320" width="16" height="64" style="fill:#786055;" id="window-11-r" data-floor="3" data-side="r" data-window="11"/>
+                <rect id="window-11-l" x="360" y="320" width="16" height="64" style="fill:#786055;"/>
+                <rect id="window-11-r" x="376" y="320" width="16" height="64" style="fill:#786055;"/>
             </g>
             <g id="window-10">
-                <rect x="280" y="320" width="16" height="64" style="fill:#786055;" id="window-10-l" data-floor="3" data-side="l" data-window="10"/>
-                <rect x="296" y="320" width="16" height="64" style="fill:#786055;" id="window-10-r" data-floor="3" data-side="r" data-window="10"/>
+                <rect id="window-10-l" x="280" y="320" width="16" height="64" style="fill:#786055;"/>
+                <rect id="window-10-r" x="296" y="320" width="16" height="64" style="fill:#786055;"/>
             </g>
             <g id="window-9">
-                <rect x="200" y="320" width="16" height="64" style="fill:#786055;" id="window-9-l" data-floor="3" data-side="l" data-window="9"/>
-                <rect x="216" y="320" width="16" height="64" style="fill:#786055;" id="window-9-r" data-floor="3" data-side="r" data-window="9"/>
+                <rect id="window-9-l" x="200" y="320" width="16" height="64" style="fill:#786055;"/>
+                <rect id="window-9-r" x="216" y="320" width="16" height="64" style="fill:#786055;"/>
             </g>
             <g id="window-8">
-                <rect x="120" y="320" width="16" height="64" style="fill:#786055;" id="window-8-l" data-floor="3" data-side="l" data-window="8"/>
-                <rect x="136" y="320" width="16" height="64" style="fill:#786055;" id="window-8-r" data-floor="3" data-side="r" data-window="8"/>
+                <rect id="window-8-l" x="120" y="320" width="16" height="64" style="fill:#786055;"/>
+                <rect id="window-8-r" x="136" y="320" width="16" height="64" style="fill:#786055;"/>
             </g>
             <g id="window-7">
-                <rect x="40" y="320" width="16" height="64" style="fill:#786055;" id="window-7-l" data-floor="3" data-side="l" data-window="7"/>
-                <rect x="56" y="320" width="16" height="64" style="fill:#786055;" id="window-7-r" data-floor="3" data-side="r" data-window="7"/>
+                <rect id="window-7-l" x="40" y="320" width="16" height="64" style="fill:#786055;"/>
+                <rect id="window-7-r" x="56" y="320" width="16" height="64" style="fill:#786055;"/>
             </g>
         </g>
         <g id="floor-4">
             <g id="window-6">
-                <rect x="440" y="192" width="16" height="64" style="fill:#786055;" id="window-6-l" data-floor="4" data-side="l" data-window="6"/>
-                <rect x="456" y="192" width="16" height="64" style="fill:#786055;" id="window-6-r" data-floor="4" data-side="r" data-window="6"/>
+                <rect id="window-6-l" x="440" y="192" width="16" height="64" style="fill:#786055;"/>
+                <rect id="window-6-r" x="456" y="192" width="16" height="64" style="fill:#786055;"/>
             </g>
             <g id="window-5">
-                <rect x="360" y="192" width="16" height="64" style="fill:#786055;" id="window-5-l" data-floor="4" data-side="l" data-window="5"/>
-                <rect x="376" y="192" width="16" height="64" style="fill:#786055;" id="window-5-r" data-floor="4" data-side="r" data-window="5"/>
+                <rect id="window-5-l" x="360" y="192" width="16" height="64" style="fill:#786055;"/>
+                <rect id="window-5-r" x="376" y="192" width="16" height="64" style="fill:#786055;"/>
             </g>
             <g id="window-4">
-                <rect x="280" y="192" width="16" height="64" style="fill:#786055;" id="window-4-l" data-floor="4" data-side="l" data-window="4"/>
-                <rect x="296" y="192" width="16" height="64" style="fill:#786055;" id="window-4-r" data-floor="4" data-side="r" data-window="4"/>
+                <rect id="window-4-l" x="280" y="192" width="16" height="64" style="fill:#786055;"/>
+                <rect id="window-4-r" x="296" y="192" width="16" height="64" style="fill:#786055;"/>
             </g>
             <g id="window-3">
-                <rect x="200" y="192" width="16" height="64" style="fill:#786055;" id="window-3-l" data-floor="4" data-side="l" data-window="3"/>
-                <rect x="216" y="192" width="16" height="64" style="fill:#786055;" id="window-3-r" data-floor="4" data-side="r" data-window="3"/>
+                <rect id="window-3-l" x="200" y="192" width="16" height="64" style="fill:#786055;"/>
+                <rect id="window-3-r" x="216" y="192" width="16" height="64" style="fill:#786055;"/>
             </g>
             <g id="window-2">
-                <rect x="120" y="192" width="16" height="64" style="fill:#786055;" id="window-2-l" data-floor="4" data-side="l" data-window="2"/>
-                <rect x="136" y="192" width="16" height="64" style="fill:#786055;" id="window-2-r" data-floor="4" data-side="r" data-window="2"/>
+                <rect id="window-2-l" x="120" y="192" width="16" height="64" style="fill:#786055;"/>
+                <rect id="window-2-r" x="136" y="192" width="16" height="64" style="fill:#786055;"/>
             </g>
             <g id="window-1">
-                <rect x="40" y="192" width="16" height="64" style="fill:#786055;" id="window-1-l" data-floor="4" data-side="l" data-window="1"/>
-                <rect x="56" y="192" width="16" height="64" style="fill:#786055;" id="window-1-r" data-floor="4" data-side="r" data-window="1"/>
+                <rect id="window-1-l" x="40" y="192" width="16" height="64" style="fill:#786055;"/>
+                <rect id="window-1-r" x="56" y="192" width="16" height="64" style="fill:#786055;"/>
             </g>
         </g>
     </g>
