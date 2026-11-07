@@ -13,6 +13,7 @@ export const useMainStore = defineStore("main", () => {
     const openWindows = useStorage("open-windows", []);
 
     async function initScene(canvas) {
+        gsap.globalTimeline.timeScale(import.meta.env.VITE_APP_ANIMATION_SCALE);
         scene.value = new Scene(canvas);
         await scene.value.init();
         const introTl = gsap.timeline();
@@ -65,6 +66,7 @@ export const useMainStore = defineStore("main", () => {
         focused,
         openWindows,
         initScene,
+        isOpen,
         focusWindow,
         zoomOut,
         openWindow,
