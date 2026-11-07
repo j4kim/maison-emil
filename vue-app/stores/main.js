@@ -14,6 +14,7 @@ export const useMainStore = defineStore("main", () => {
     async function initScene(canvas) {
         scene.value = new Scene(canvas);
         await scene.value.init();
+        scene.value.zoomOut(4);
         openWindows.value.forEach((windowId) => {
             const win = scene.value.house.windows[windowId];
             scene.value.openWindow(win);

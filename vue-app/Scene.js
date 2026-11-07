@@ -8,6 +8,8 @@ export const HOME_H = 704; // todo : get values from House
 export const HOME_W = 512;
 export const WIN_W = 32;
 export const WIN_H = 64;
+export const INITIAL_CAMERA_POS = [0, HOME_H, 100];
+export const INITIAL_CAMERA_ROT = [0.6, 0, 0];
 export const DEFAULT_CAMERA_POS = [0, HOME_H / 3, 600];
 export const DEFAULT_CAMERA_ROT = [Math.PI / 32, 0, 0];
 
@@ -31,8 +33,8 @@ export class Scene {
 
         this.renderer.setAnimationLoop((time) => this.animate(time));
 
-        this.camera.position.set(...DEFAULT_CAMERA_POS);
-        this.camera.rotation.set(...DEFAULT_CAMERA_ROT);
+        this.camera.position.set(...INITIAL_CAMERA_POS);
+        this.camera.rotation.set(...INITIAL_CAMERA_ROT);
 
         this.picker = new GPUPicker(
             THREE,
@@ -74,24 +76,25 @@ export class Scene {
         return { x, y };
     }
 
-    focusWindow(win) {
+    focusWindow(win, duration = 2, ease = "power1.out") {
         const { x, y } = this.getWindowCenter(win);
         const z = 80;
-        gsap.to(this.camera.position, { x, y, z, duration: 1 });
-        gsap.to(this.camera.rotation, { x: 0, duration: 1 });
+        gsap.to(this.camera.position, { x, y, z, duration, ease });
+        gsap.to(this.camera.rotation, { x: 0, duration, ease });
     }
 
-    zoomOut() {
+    zoomOut(duration = 2, ease = "power1.inOut") {
         const [x, y, z] = DEFAULT_CAMERA_POS;
-        gsap.to(this.camera.position, { x, y, z, duration: 1 });
+        gsap.to(this.camera.position, { x, y, z, duration, ease });
         gsap.to(this.camera.rotation, {
             x: DEFAULT_CAMERA_ROT[0],
-            duration: 1,
+            duration,
+            ease,
         });
     }
 
-    openWindow(win) {
-        gsap.to(win.l.rotation, { y: -Math.PI, duration: 1 });
-        gsap.to(win.r.rotation, { y: Math.PI, duration: 1 });
+    openWindow(win, ease = "power1.out") {
+        gsap.to(win.l.rotation, { y: -Math.PI, duration: 1, ease });
+        gsap.to(win.r.rotation, { y: Math.PI, duration: 1, ease });
     }
 }
