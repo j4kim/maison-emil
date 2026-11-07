@@ -3,6 +3,7 @@ import { HOME_H, HOME_W, WIN_H, WIN_W } from "./Scene";
 import { SVGLoader } from "three/examples/jsm/Addons.js";
 import { Text } from "troika-three-text";
 import { getShutterData } from "./utils";
+import font from "./assets/Letters for Learners.ttf";
 
 export class House extends THREE.Group {
     constructor(svgUrl) {
@@ -91,9 +92,10 @@ export class House extends THREE.Group {
             const txt = new Text();
 
             txt.text = id;
-            txt.fontSize = 10;
+            txt.font = font;
+            txt.fontSize = 12;
             txt.anchorX = "center";
-            txt.anchorY = -WIN_H * 0.8;
+            txt.anchorY = -WIN_H * 0.7;
             txt.position.x = x;
             txt.position.y = y;
             txt.position.z = 1;
