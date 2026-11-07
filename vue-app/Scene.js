@@ -79,22 +79,24 @@ export class Scene {
     focusWindow(win, duration = 2, ease = "power1.out") {
         const { x, y } = this.getWindowCenter(win);
         const z = 80;
-        gsap.to(this.camera.position, { x, y, z, duration, ease });
-        gsap.to(this.camera.rotation, { x: 0, duration, ease });
+        return gsap
+            .timeline({ defaults: { duration, ease } })
+            .to(this.camera.position, { x, y, z }, 0)
+            .to(this.camera.rotation, { x: 0 }, 0);
     }
 
     zoomOut(duration = 2, ease = "power1.inOut") {
         const [x, y, z] = DEFAULT_CAMERA_POS;
-        gsap.to(this.camera.position, { x, y, z, duration, ease });
-        gsap.to(this.camera.rotation, {
-            x: DEFAULT_CAMERA_ROT[0],
-            duration,
-            ease,
-        });
+        return gsap
+            .timeline({ defaults: { duration, ease } })
+            .to(this.camera.position, { x, y, z }, 0)
+            .to(this.camera.rotation, { x: DEFAULT_CAMERA_ROT[0] }, 0);
     }
 
     openWindow(win, ease = "power1.out") {
-        gsap.to(win.l.rotation, { y: -Math.PI, duration: 1, ease });
-        gsap.to(win.r.rotation, { y: Math.PI, duration: 1, ease });
+        return gsap
+            .timeline({ defaults: { duration: 1, ease } })
+            .to(win.l.rotation, { y: -Math.PI }, 0)
+            .to(win.r.rotation, { y: Math.PI }, 0);
     }
 }
