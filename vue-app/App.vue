@@ -1,7 +1,6 @@
 <script setup>
 import { onMounted, useTemplateRef } from "vue";
 import { useMainStore } from "./stores/main";
-import { Scene } from "./Scene";
 import Ui from "./Ui.vue";
 
 const mainStore = useMainStore();
@@ -9,7 +8,7 @@ const mainStore = useMainStore();
 const canvas = useTemplateRef("canvas");
 
 onMounted(() => {
-    mainStore.scene = new Scene(canvas.value);
+    mainStore.initScene(canvas.value);
 });
 </script>
 

@@ -1,12 +1,24 @@
+import { useStorage } from "@vueuse/core";
 import { defineStore } from "pinia";
 import { ref } from "vue";
+import { Scene } from "../Scene";
 
 export const useMainStore = defineStore("main", () => {
     const user = ref(JSON.parse(document.body.dataset.user));
 
+    /** @type {import("vue").Ref<Scene>} */
     const scene = ref(null);
     const focused = ref(null);
-    const openWindows = ref([]);
+    const openWindows = useStorage("open-windows", []);
+
+    async function initScene(canvas) {
+        scene.value = new Scene(canvas);
+        await scene.value.init();
+        openWindows.value.forEach((windowId) => {
+            const win = scene.value.house.windows[windowId];
+            scene.value.openWindow(win);
+        });
+    }
 
     /**
      * @param ev {PointerEvent}
@@ -24,15 +36,15 @@ export const useMainStore = defineStore("main", () => {
         focused.value = null;
     }
 
-    function open() {
+    function openWindow() {
         const win = scene.value.house.windows[focused.value];
-        scene.value.open(win);
+        scene.value.openWindow(win);
         openWindows.value.push(focused.value);
     }
 
     function openAll() {
         scene.value.house.windows.forEach((win) => {
-            scene.value.open(win);
+            scene.value.openWindow(win);
         });
     }
 
@@ -43,9 +55,10 @@ export const useMainStore = defineStore("main", () => {
         scene,
         focused,
         openWindows,
+        initScene,
         focusWindow,
         zoomOut,
-        open,
+        openWindow,
         openAll,
     };
 });

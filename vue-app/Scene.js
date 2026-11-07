@@ -13,6 +13,8 @@ export const DEFAULT_CAMERA_ROT = [Math.PI / 32, 0, 0];
 
 export class Scene {
     constructor(canvas) {
+        this.initialized = false;
+
         this.canvas = canvas;
         this.scene = new THREE.Scene();
         this.camera = new THREE.PerspectiveCamera(
@@ -29,11 +31,6 @@ export class Scene {
 
         this.renderer.setAnimationLoop((time) => this.animate(time));
 
-        House.init(maisonSvg).then((house) => {
-            this.house = house;
-            this.scene.add(this.house);
-        });
-
         this.camera.position.set(...DEFAULT_CAMERA_POS);
         this.camera.rotation.set(...DEFAULT_CAMERA_ROT);
 
@@ -43,6 +40,12 @@ export class Scene {
             this.scene,
             this.camera,
         );
+    }
+
+    async init() {
+        this.house = await House.init(maisonSvg);
+        this.scene.add(this.house);
+        this.initialized = true;
     }
 
     animate(time) {
@@ -87,7 +90,7 @@ export class Scene {
         });
     }
 
-    open(win) {
+    openWindow(win) {
         gsap.to(win.l.rotation, { y: -Math.PI, duration: 1 });
         gsap.to(win.r.rotation, { y: Math.PI, duration: 1 });
     }

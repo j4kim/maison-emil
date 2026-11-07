@@ -19,7 +19,7 @@ const mainStore = useMainStore();
                 !mainStore.openWindows.includes(mainStore.focused)
             "
             class="bg-white px-1"
-            @click="mainStore.open"
+            @click="mainStore.openWindow"
         >
             ouvrir
         </button>
