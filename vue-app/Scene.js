@@ -23,8 +23,10 @@ export class Scene {
 
         this.renderer.setAnimationLoop((time) => this.animate(time));
 
-        this.house = new House(maisonSvg);
-        this.scene.add(this.house);
+        House.init(maisonSvg).then((house) => {
+            this.house = house;
+            this.scene.add(this.house);
+        });
 
         this.camera.position.z = 600;
         this.camera.position.y = HOME_H / 3;

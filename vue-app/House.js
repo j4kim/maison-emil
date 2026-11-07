@@ -9,7 +9,12 @@ export class House extends THREE.Group {
         this.windows = [];
         this.root = new THREE.Group();
         this.add(this.root);
-        this.load();
+    }
+
+    static async init(svgUrl) {
+        const house = new House(svgUrl);
+        await house.load();
+        return house;
     }
 
     async load() {
