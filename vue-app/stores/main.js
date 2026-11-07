@@ -48,7 +48,9 @@ export const useMainStore = defineStore("main", () => {
 
     function openWindow() {
         const win = scene.value.house.windows[focused.value];
-        scene.value.openWindow(win);
+        gsap.timeline()
+            .add(scene.value.openWindow(win))
+            .add(scene.value.insideWindow(win));
         openWindows.value.push(focused.value);
     }
 
