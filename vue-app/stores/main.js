@@ -48,12 +48,6 @@ export const useMainStore = defineStore("main", () => {
             .then(() => openWindows.value.push(winId));
     }
 
-    function openAll() {
-        scene.value.house.windows.forEach((win, id) => {
-            scene.value.openWindow(id);
-        });
-    }
-
     return {
         appVersion: document.body.dataset.appVersion,
         appName: document.body.dataset.appName,
@@ -66,6 +60,5 @@ export const useMainStore = defineStore("main", () => {
         goToWindow,
         zoomOut,
         openAndGoInsideWindow,
-        openAll,
     };
 });

@@ -1,11 +1,3 @@
-<script setup>
-import { useMainStore } from "../stores/main";
+<script setup></script>
 
-const mainStore = useMainStore();
-</script>
-
-<template>
-    <button class="bg-white px-1" @click="mainStore.openAll">
-        ouvrir tout
-    </button>
-</template>
+<template></template>
