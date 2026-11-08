@@ -1,22 +1,9 @@
 <script setup>
-import { onMounted, useTemplateRef } from "vue";
-import { useMainStore } from "./stores/main";
 import Ui from "./ui/Ui.vue";
-
-const mainStore = useMainStore();
-
-const canvas = useTemplateRef("canvas");
-
-onMounted(() => {
-    mainStore.initScene(canvas.value);
-});
+import Drawing from "./drawing/Drawing.vue";
 </script>
 
 <template>
-    <canvas
-        class="absolute"
-        ref="canvas"
-        @click="mainStore.focusWindow"
-    ></canvas>
+    <Drawing class="fixed" />
     <Ui class="absolute" />
 </template>
