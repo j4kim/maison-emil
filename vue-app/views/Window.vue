@@ -2,6 +2,8 @@
 import { useRoute } from "vue-router";
 import { useMainStore } from "../stores/main";
 import { ref } from "vue";
+import SvgIcon from "@jamescoyle/vue-icon";
+import { mdiHome } from "@mdi/js";
 
 const route = useRoute();
 const mainStore = useMainStore();
@@ -17,12 +19,12 @@ async function open() {
 
 <template>
     <div>
-        <div class="p-4">
+        <div class="absolute p-4">
             <button
-                class="bg-white px-2 py-1 text-xl"
+                class="rounded-full bg-white p-2"
                 @click="$router.push({ name: 'home' })"
             >
-                retour
+                <SvgIcon type="mdi" class="size-12" :path="mdiHome" />
             </button>
         </div>
         <div v-if="mainStore.isOpen(+route.params.winId)">

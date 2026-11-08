@@ -19,6 +19,8 @@
         "vite": "^8.0.0"
     },
     "dependencies": {
+        "@jamescoyle/vue-icon": "^0.1.2",
+        "@mdi/js": "^7.4.47",
         "@vueuse/core": "^15.0.0",
         "gsap": "^3.15.1",
         "pinia": "^3.0.4",
