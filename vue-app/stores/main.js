@@ -41,10 +41,11 @@ export const useMainStore = defineStore("main", () => {
     }
 
     function openAndGoInsideWindow(winId) {
-        gsap.timeline()
+        return gsap
+            .timeline()
             .add(scene.value.openWindow(winId))
-            .add(scene.value.insideWindow(winId));
-        openWindows.value.push(winId);
+            .add(scene.value.insideWindow(winId))
+            .then(() => openWindows.value.push(winId));
     }
 
     function openAll() {
