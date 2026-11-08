@@ -1,7 +1,7 @@
 import { useStorage } from "@vueuse/core";
 import { defineStore } from "pinia";
 import { ref } from "vue";
-import { Scene } from "../Scene";
+import { Scene } from "../drawing/Scene";
 import gsap from "gsap";
 
 export const useMainStore = defineStore("main", () => {

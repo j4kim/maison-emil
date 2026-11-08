@@ -1,5 +1,5 @@
 import * as THREE from "three";
-import maisonSvg from "./assets/maison.svg";
+import maisonSvg from "../assets/maison.svg";
 import { GPUPicker } from "three_gpu_picking";
 import { House } from "./House";
 import gsap from "gsap";

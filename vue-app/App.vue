@@ -1,7 +1,7 @@
 <script setup>
 import { onMounted, useTemplateRef } from "vue";
 import { useMainStore } from "./stores/main";
-import Ui from "./Ui.vue";
+import Ui from "./ui/Ui.vue";
 
 const mainStore = useMainStore();
 
