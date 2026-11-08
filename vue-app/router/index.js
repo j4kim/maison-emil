@@ -22,11 +22,18 @@ const router = createRouter({
     routes,
 });
 
-router.beforeEach((to) => {
+router.beforeEach((to, from) => {
+    console.log("beforeEach", { to, from });
     if (to.meta?.requireAuth && !useMainStore().user) {
         redirectToLogin(to.href);
         return false;
     }
+});
+
+export let previousRouteName = null;
+
+router.afterEach((to, from) => {
+    previousRouteName = from?.name;
 });
 
 export default router;

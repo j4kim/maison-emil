@@ -75,8 +75,9 @@ export class Scene {
         return { x, y };
     }
 
-    focusWindow(winId, z = 80, duration = 2, ease = "power1.out") {
+    focusWindow(winId, inside = false, duration = 2, ease = "power1.out") {
         const { x, y } = this.getWindowCenter(winId);
+        const z = inside ? 20 : 80;
         return gsap
             .timeline({ defaults: { duration, ease } })
             .to(this.camera.position, { x, y, z }, 0)
@@ -95,10 +96,10 @@ export class Scene {
             .to(this.camera.rotation, { x: DEFAULT_CAMERA_ROT[0] }, 0);
     }
 
-    openWindow(winId, ease = "power1.out") {
+    openWindow(winId, duration = 1.5, ease = "power1.out") {
         const win = this.house.windows[winId];
         return gsap
-            .timeline({ defaults: { duration: 1, ease } })
+            .timeline({ defaults: { duration, ease } })
             .to(win.l.rotation, { y: -Math.PI }, 0)
             .to(win.r.rotation, { y: Math.PI }, 0);
     }

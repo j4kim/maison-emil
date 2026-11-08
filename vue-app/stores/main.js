@@ -19,7 +19,7 @@ export const useMainStore = defineStore("main", () => {
         scene.value = new Scene(canvas);
         initialized.value = await scene.value.init();
         openWindows.value.forEach((winId) => {
-            scene.value.openWindow(winId);
+            scene.value.openWindow(winId, 0);
         });
     }
 
@@ -27,11 +27,11 @@ export const useMainStore = defineStore("main", () => {
         return openWindows.value.includes(winId);
     }
 
-    async function goToWindow(winId) {
+    async function goToWindow(winId, duration = 2) {
         await until(initialized).toBe(true);
         isOpen(winId)
-            ? scene.value.insideWindow(winId)
-            : scene.value.focusWindow(winId);
+            ? scene.value.insideWindow(winId, duration)
+            : scene.value.focusWindow(winId, false, duration);
     }
 
     async function zoomOut() {

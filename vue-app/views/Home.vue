@@ -1,9 +1,11 @@
 <script setup>
 import { useMainStore } from "../stores/main";
+import { previousRouteName } from "../router";
 
 const mainStore = useMainStore();
 
-mainStore.scene.zoomOut(4);
+const duration = previousRouteName === "window" ? 2 : 4;
+mainStore.scene.zoomOut(duration);
 </script>
 
 <template>
