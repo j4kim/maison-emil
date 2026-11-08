@@ -11,11 +11,12 @@ mainStore.goToWindow(+route.params.winId, duration);
 </script>
 
 <template>
-    <div>
-        <div>Fenêtre {{ route.params.winId }}</div>
+    <div
+        v-if="!mainStore.isOpen(+route.params.winId)"
+        class="flex h-dvh w-dvw items-center justify-center"
+    >
         <button
-            v-if="!mainStore.isOpen(+route.params.winId)"
-            class="bg-white px-1"
+            class="bg-white px-2 py-1 text-6xl"
             @click="mainStore.openAndGoInsideWindow(+route.params.winId)"
         >
             ouvrir
