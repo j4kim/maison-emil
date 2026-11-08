@@ -12,5 +12,5 @@ onMounted(() => {
 </script>
 
 <template>
-    <canvas ref="canvas" @click="mainStore.focusWindow"></canvas>
+    <canvas ref="canvas"></canvas>
 </template>

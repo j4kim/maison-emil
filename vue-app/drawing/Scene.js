@@ -15,8 +15,6 @@ export const DEFAULT_CAMERA_ROT = [Math.PI / 32, 0, 0];
 
 export class Scene {
     constructor(canvas) {
-        this.initialized = false;
-
         this.canvas = canvas;
         this.scene = new THREE.Scene();
         this.camera = new THREE.PerspectiveCamera(
@@ -47,7 +45,7 @@ export class Scene {
     async init() {
         this.house = await House.init(maisonSvg);
         this.scene.add(this.house);
-        this.initialized = true;
+        return true;
     }
 
     animate(time) {

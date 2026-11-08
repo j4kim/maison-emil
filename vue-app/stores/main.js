@@ -1,4 +1,4 @@
-import { useStorage } from "@vueuse/core";
+import { until, useStorage } from "@vueuse/core";
 import { defineStore } from "pinia";
 import { ref } from "vue";
 import { Scene } from "../drawing/Scene";
@@ -9,19 +9,17 @@ export const useMainStore = defineStore("main", () => {
 
     /** @type {import("vue").Ref<Scene>} */
     const scene = ref(null);
-    const focused = ref(null);
     const openWindows = useStorage("open-windows", []);
+    const initialized = ref(false);
 
     async function initScene(canvas) {
         gsap.globalTimeline.timeScale(
             import.meta.env.VITE_APP_ANIMATION_SCALE ?? 1,
         );
         scene.value = new Scene(canvas);
-        await scene.value.init();
-        const introTl = gsap.timeline();
-        introTl.add(scene.value.zoomOut(4), 0);
+        initialized.value = await scene.value.init();
         openWindows.value.forEach((winId) => {
-            introTl.add(scene.value.openWindow(winId), 2 + 2 * Math.random());
+            scene.value.openWindow(winId);
         });
     }
 
@@ -29,28 +27,23 @@ export const useMainStore = defineStore("main", () => {
         return openWindows.value.includes(winId);
     }
 
-    /**
-     * @param ev {PointerEvent}
-     */
-    function focusWindow(ev) {
-        const winId = scene.value.pickWindow(ev);
-        if (!winId) return;
+    async function goToWindow(winId) {
+        await until(initialized).toBe(true);
         isOpen(winId)
             ? scene.value.insideWindow(winId)
             : scene.value.focusWindow(winId);
-        focused.value = winId;
     }
 
-    function zoomOut() {
+    async function zoomOut() {
+        await until(initialized).toBe(true);
         scene.value.zoomOut();
-        focused.value = null;
     }
 
-    function openWindow() {
+    function openAndGoInsideWindow(winId) {
         gsap.timeline()
-            .add(scene.value.openWindow(focused.value))
-            .add(scene.value.insideWindow(focused.value));
-        openWindows.value.push(focused.value);
+            .add(scene.value.openWindow(winId))
+            .add(scene.value.insideWindow(winId));
+        openWindows.value.push(winId);
     }
 
     function openAll() {
@@ -64,13 +57,13 @@ export const useMainStore = defineStore("main", () => {
         appName: document.body.dataset.appName,
         user,
         scene,
-        focused,
         openWindows,
+        initialized,
         initScene,
         isOpen,
-        focusWindow,
+        goToWindow,
         zoomOut,
-        openWindow,
+        openAndGoInsideWindow,
         openAll,
     };
 });

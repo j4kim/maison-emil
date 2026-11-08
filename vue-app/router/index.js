@@ -1,6 +1,6 @@
 import { createRouter, createWebHistory } from "vue-router";
 import Home from "../views/Home.vue";
-import Profile from "../views/Profile.vue";
+import Window from "../views/Window.vue";
 import { useMainStore } from "../stores/main";
 import { redirectToLogin } from "../api";
 
@@ -11,12 +11,9 @@ const routes = [
         component: Home,
     },
     {
-        path: "/profile",
-        name: "profile",
-        component: Profile,
-        meta: {
-            requireAuth: true,
-        },
+        path: "/:winId",
+        name: "window",
+        component: Window,
     },
 ];
 
