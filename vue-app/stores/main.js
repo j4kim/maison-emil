@@ -29,9 +29,10 @@ export const useMainStore = defineStore("main", () => {
 
     async function goToWindow(winId, duration = 2) {
         await until(initialized).toBe(true);
-        isOpen(winId)
+        const tl = isOpen(winId)
             ? scene.value.insideWindow(winId, duration)
             : scene.value.focusWindow(winId, false, duration);
+        return tl.then();
     }
 
     async function zoomOut() {

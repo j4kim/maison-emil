@@ -9,11 +9,21 @@ const routes = [
         path: "/",
         name: "home",
         component: Home,
+        beforeEnter: async (to, from) => {
+            const mainStore = useMainStore();
+            const duration = from.name === "window" ? 2 : 4;
+            mainStore.scene.zoomOut(duration);
+        },
     },
     {
         path: "/:winId",
         name: "window",
         component: Window,
+        beforeEnter: async (to, from) => {
+            const mainStore = useMainStore();
+            const duration = !from.name ? 0 : 2;
+            await mainStore.goToWindow(+to.params.winId, duration);
+        },
     },
 ];
 
@@ -23,17 +33,10 @@ const router = createRouter({
 });
 
 router.beforeEach((to, from) => {
-    console.log("beforeEach", { to, from });
     if (to.meta?.requireAuth && !useMainStore().user) {
         redirectToLogin(to.href);
         return false;
     }
-});
-
-export let previousRouteName = null;
-
-router.afterEach((to, from) => {
-    previousRouteName = from?.name;
 });
 
 export default router;
