@@ -12,10 +12,10 @@ const mainStore = useMainStore();
         class="flex h-dvh w-dvw items-center justify-center"
     >
         <button
-            class="bg-white px-2 py-1 text-6xl"
+            class="font-display bg-white px-2 py-1 text-8xl"
             @click="mainStore.openAndGoInsideWindow(+route.params.winId)"
         >
-            ouvrir
+            Ouvrir
         </button>
     </div>
 </template>
