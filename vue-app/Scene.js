@@ -70,22 +70,23 @@ export class Scene {
         }
     }
 
-    getWindowCenter(win) {
+    getWindowCenter(winId) {
+        const win = this.house.windows[winId];
         const x = this.house.root.position.x + win.l.position.x + WIN_W / 2;
         const y = this.house.root.position.y + win.l.position.y;
         return { x, y };
     }
 
-    focusWindow(win, z = 80, duration = 2, ease = "power1.out") {
-        const { x, y } = this.getWindowCenter(win);
+    focusWindow(winId, z = 80, duration = 2, ease = "power1.out") {
+        const { x, y } = this.getWindowCenter(winId);
         return gsap
             .timeline({ defaults: { duration, ease } })
             .to(this.camera.position, { x, y, z }, 0)
             .to(this.camera.rotation, { x: 0 }, 0);
     }
 
-    insideWindow(win, duration = 2, ease = "power1.out") {
-        return this.focusWindow(win, 20, duration, ease);
+    insideWindow(winId, duration = 2, ease = "power1.out") {
+        return this.focusWindow(winId, 20, duration, ease);
     }
 
     zoomOut(duration = 2, ease = "power1.inOut") {
@@ -96,7 +97,8 @@ export class Scene {
             .to(this.camera.rotation, { x: DEFAULT_CAMERA_ROT[0] }, 0);
     }
 
-    openWindow(win, ease = "power1.out") {
+    openWindow(winId, ease = "power1.out") {
+        const win = this.house.windows[winId];
         return gsap
             .timeline({ defaults: { duration: 1, ease } })
             .to(win.l.rotation, { y: -Math.PI }, 0)

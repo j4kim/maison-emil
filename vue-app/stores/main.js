@@ -20,27 +20,25 @@ export const useMainStore = defineStore("main", () => {
         await scene.value.init();
         const introTl = gsap.timeline();
         introTl.add(scene.value.zoomOut(4), 0);
-        openWindows.value.forEach((windowId) => {
-            const win = scene.value.house.windows[windowId];
-            introTl.add(scene.value.openWindow(win), 2 + 2 * Math.random());
+        openWindows.value.forEach((winId) => {
+            introTl.add(scene.value.openWindow(winId), 2 + 2 * Math.random());
         });
     }
 
-    function isOpen(windowId) {
-        return openWindows.value.includes(windowId);
+    function isOpen(winId) {
+        return openWindows.value.includes(winId);
     }
 
     /**
      * @param ev {PointerEvent}
      */
     function focusWindow(ev) {
-        const windowId = scene.value.pickWindow(ev);
-        if (!windowId) return;
-        const win = scene.value.house.windows[windowId];
-        isOpen(windowId)
-            ? scene.value.insideWindow(win)
-            : scene.value.focusWindow(win);
-        focused.value = windowId;
+        const winId = scene.value.pickWindow(ev);
+        if (!winId) return;
+        isOpen(winId)
+            ? scene.value.insideWindow(winId)
+            : scene.value.focusWindow(winId);
+        focused.value = winId;
     }
 
     function zoomOut() {
@@ -49,16 +47,15 @@ export const useMainStore = defineStore("main", () => {
     }
 
     function openWindow() {
-        const win = scene.value.house.windows[focused.value];
         gsap.timeline()
-            .add(scene.value.openWindow(win))
-            .add(scene.value.insideWindow(win));
+            .add(scene.value.openWindow(focused.value))
+            .add(scene.value.insideWindow(focused.value));
         openWindows.value.push(focused.value);
     }
 
     function openAll() {
-        scene.value.house.windows.forEach((win) => {
-            scene.value.openWindow(win);
+        scene.value.house.windows.forEach((win, id) => {
+            scene.value.openWindow(id);
         });
     }
 
