@@ -4,6 +4,7 @@ namespace App\Enums;
 
 use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\RichEditor;
+use Filament\Resources\RelationManagers\RelationManager;
 use Filament\Support\Contracts\HasLabel;
 use Illuminate\Contracts\Support\Htmlable;
 
@@ -23,7 +24,9 @@ enum BlockType: string implements HasLabel
                 FileUpload::make('content')
                     ->disk('public')
                     ->panelLayout('grid')
-                    ->acceptedFileTypes(['video/*']),
+                    ->acceptedFileTypes(['video/*'])
+                    ->preserveFilenames()
+                    ->directory(fn(RelationManager $livewire) => $livewire->getOwnerRecord()->id),
             ],
             default => []
         };
