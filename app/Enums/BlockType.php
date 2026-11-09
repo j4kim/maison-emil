@@ -28,6 +28,7 @@ enum BlockType: string implements HasLabel
                     ->acceptedFileTypes([$this->value . '/*'])
                     ->storeFileNamesIn('content.originalFilename')
                     ->directory(fn(RelationManager $livewire) => $livewire->getOwnerRecord()->id)
+                    ->maxSize(1024 * 64)
                     ->columnSpanFull(),
             ],
             default => []

@@ -11,6 +11,7 @@ Route::middleware('auth:sanctum')->group(function () {
     })->name('inspire');
 });
 
-Route::get('windows/{window}/content', function (Window $window) {
+Route::get('windows/{windowNumber}/content', function (int $windowNumber) {
+    $window = Window::where('number', $windowNumber)->firstOrFail();
     return $window->load('blocks');
 })->name('window-content');
