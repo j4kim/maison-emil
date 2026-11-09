@@ -74,7 +74,7 @@ const articleWidth = computed(
         <template v-if="!navigating">
             <div v-if="mainStore.isOpen(winId)">
                 <article
-                    class="prose-lg mx-auto p-2 pt-28"
+                    class="prose-lg mx-auto p-2 pt-28 lg:pt-8"
                     :style="{ maxWidth: articleWidth }"
                 >
                     <h1>Fenêtre {{ winId }}</h1>
