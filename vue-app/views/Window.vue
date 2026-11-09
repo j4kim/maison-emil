@@ -4,6 +4,7 @@ import { useMainStore } from "../stores/main";
 import { computed, ref } from "vue";
 import SvgIcon from "@jamescoyle/vue-icon";
 import { mdiArrowLeft, mdiArrowRight, mdiHome } from "@mdi/js";
+import WindowContent from "../components/WindowContent.vue";
 
 const route = useRoute();
 const router = useRouter();
@@ -32,8 +33,8 @@ const nav = computed(() => {
         next,
         go: async (win) => {
             navigating.value = true;
-            await mainStore.navigateFromTo(winId.value, win.id);
             router.push({ params: { winId: win.id } });
+            await mainStore.navigateFromTo(winId.value, win.id);
             navigating.value = false;
         },
     };
@@ -74,10 +75,13 @@ const articleWidth = computed(
         <template v-if="!navigating">
             <div v-if="mainStore.isOpen(winId)">
                 <article
-                    class="prose-lg mx-auto p-2 pt-28 lg:pt-8"
+                    class="prose sm:prose-lg md:prose-xl mx-auto p-2 px-6 pt-28 lg:pt-6"
                     :style="{ maxWidth: articleWidth }"
                 >
-                    <h1>Fenêtre {{ winId }}</h1>
+                    <h3>Fenêtre {{ winId }}</h3>
+                    <Suspense>
+                        <WindowContent :winId />
+                    </Suspense>
                 </article>
             </div>
             <div
