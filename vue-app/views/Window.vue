@@ -38,6 +38,11 @@ const nav = computed(() => {
         },
     };
 });
+
+const ratio = computed(() => mainStore.scene.ratio);
+const articleWidth = computed(
+    () => `${Math.min(100, (1 / ratio.value) * 100)}%`,
+);
 </script>
 
 <template>
@@ -68,7 +73,10 @@ const nav = computed(() => {
         </div>
         <template v-if="!navigating">
             <div v-if="mainStore.isOpen(winId)">
-                <article class="prose-lg mx-auto max-w-3xl p-2 pt-28">
+                <article
+                    class="prose-lg mx-auto p-2 pt-28"
+                    :style="{ maxWidth: articleWidth }"
+                >
                     <h1>Fenêtre {{ winId }}</h1>
                 </article>
             </div>
