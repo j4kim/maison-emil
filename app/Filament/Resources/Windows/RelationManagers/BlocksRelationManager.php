@@ -27,7 +27,9 @@ class BlocksRelationManager extends RelationManager
             ->components([
                 Select::make('type')
                     ->options(BlockType::class)
+                    ->default(BlockType::RichContent)
                     ->live()
+                    ->required()
                     ->afterStateUpdated(
                         fn(Select $component) => $component
                             ->getContainer()
