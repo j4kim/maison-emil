@@ -16,11 +16,11 @@ enum BlockType: string implements HasLabel
     {
         return match ($this) {
             self::RichContent => [
-                RichEditor::make('content.html')
+                RichEditor::make('content')
                     ->columnSpanFull(),
             ],
             self::Video => [
-                FileUpload::make('content.video')
+                FileUpload::make('content')
                     ->disk('public')
                     ->panelLayout('grid')
                     ->acceptedFileTypes(['video/*']),

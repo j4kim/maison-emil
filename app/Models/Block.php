@@ -10,7 +10,6 @@ class Block extends Model
 {
     protected $casts = [
         'type' => BlockType::class,
-        'content' => 'array',
     ];
 
     public function window(): BelongsTo
