@@ -54,6 +54,7 @@ export class House extends THREE.Group {
                     geometry.translate(-pivotX, -pivotY, 0);
                     mesh.position.set(pivotX, pivotY, 0);
                     const win = this.windows[windowId] ?? {
+                        id: windowId,
                         state: this.store.getWindowState(windowId),
                     };
                     win[side] = mesh;
