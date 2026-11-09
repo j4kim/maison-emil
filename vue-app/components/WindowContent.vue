@@ -12,13 +12,30 @@ watchEffect(async () => {
 </script>
 
 <template>
-    <div class="window-content" v-if="content">
+    <div class="window-content pb-12" v-if="content">
         <h1>{{ content.title }}</h1>
-        <div v-for="block in content.blocks">
+        <template v-for="block in content.blocks">
             <div
                 v-if="block.type === 'rich-content'"
                 v-html="block.content.html"
             ></div>
-        </div>
+            <img
+                v-else-if="block.type === 'image'"
+                class="mx-auto"
+                :src="`storage/${block.content.filename}`"
+            />
+            <video
+                v-else-if="block.type === 'video'"
+                class="mx-auto"
+                :src="`storage/${block.content.filename}`"
+                controls
+            ></video>
+            <audio
+                v-else-if="block.type === 'audio'"
+                class="w-full"
+                :src="`storage/${block.content.filename}`"
+                controls
+            ></audio>
+        </template>
     </div>
 </template>
