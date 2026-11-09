@@ -11,6 +11,8 @@ use Illuminate\Contracts\Support\Htmlable;
 enum BlockType: string implements HasLabel
 {
     case RichContent = 'rich-content';
+    case Image = 'image';
+    case Audio = 'audio';
     case Video = 'video';
 
     public function getSchema(): array
@@ -20,13 +22,13 @@ enum BlockType: string implements HasLabel
                 RichEditor::make('content.html')
                     ->columnSpanFull(),
             ],
-            self::Video => [
+            self::Image, self::Audio, self::Video => [
                 FileUpload::make('content.filename')
                     ->disk('public')
-                    ->panelLayout('grid')
-                    ->acceptedFileTypes(['video/*'])
+                    ->acceptedFileTypes([$this->value . '/*'])
                     ->storeFileNamesIn('content.originalFilename')
-                    ->directory(fn(RelationManager $livewire) => $livewire->getOwnerRecord()->id),
+                    ->directory(fn(RelationManager $livewire) => $livewire->getOwnerRecord()->id)
+                    ->columnSpanFull(),
             ],
             default => []
         };
@@ -46,7 +48,7 @@ enum BlockType: string implements HasLabel
             return trim(preg_replace('/\s+/', ' ', $text) ?? $text);
         }
         return match ($this) {
-            self::Video => $content['originalFilename'],
+            self::Image, self::Audio, self::Video => $content['originalFilename'],
             default => ""
         };
     }
