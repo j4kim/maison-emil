@@ -1,5 +1,6 @@
 {
     "window": "fenêtre",
     "opens_on": "ouverture",
-    "title": "titre"
+    "title": "titre",
+    "blocks_count": "blocs"
 }

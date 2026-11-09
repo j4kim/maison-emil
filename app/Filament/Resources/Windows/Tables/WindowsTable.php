@@ -18,6 +18,8 @@ class WindowsTable
                     ->sortable(),
                 TextColumn::make('title')
                     ->searchable(),
+                TextColumn::make('blocks_count')
+                    ->counts('blocks')
             ])
             ->filters([
                 //
