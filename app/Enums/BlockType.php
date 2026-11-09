@@ -36,4 +36,11 @@ enum BlockType: string implements HasLabel
     {
         return __($this->name) ?? '';
     }
+
+    public function getContentPreview(string $content): string
+    {
+        $text = preg_replace('/<[^>]*>/', ' ', $content) ?? $content;
+        $text = html_entity_decode($text, ENT_QUOTES | ENT_HTML5, 'UTF-8');
+        return trim(preg_replace('/\s+/', ' ', $text) ?? $text);
+    }
 }

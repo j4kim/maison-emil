@@ -3,6 +3,7 @@
 namespace App\Filament\Resources\Windows\RelationManagers;
 
 use App\Enums\BlockType;
+use App\Models\Block;
 use Filament\Actions\BulkActionGroup;
 use Filament\Actions\CreateAction;
 use Filament\Actions\DeleteAction;
@@ -51,6 +52,11 @@ class BlocksRelationManager extends RelationManager
             ->recordTitleAttribute('type')
             ->columns([
                 TextColumn::make('type'),
+                TextColumn::make('content')
+                    ->formatStateUsing(function (Block $record, string $state) {
+                        return $record->type->getContentPreview($state);
+                    })
+                    ->limit(80),
             ])
             ->filters([
                 //
