@@ -55,9 +55,7 @@ class BlocksRelationManager extends RelationManager
             ->columns([
                 TextColumn::make('type'),
                 TextColumn::make('content')
-                    ->formatStateUsing(function (Block $record, string $state) {
-                        return $record->type->getContentPreview($state);
-                    })
+                    ->state(fn(Block $record) => $record->type->getContentPreview($record->content))
                     ->limit(80),
             ])
             ->reorderable('order')

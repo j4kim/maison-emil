@@ -17,15 +17,15 @@ enum BlockType: string implements HasLabel
     {
         return match ($this) {
             self::RichContent => [
-                RichEditor::make('content')
+                RichEditor::make('content.html')
                     ->columnSpanFull(),
             ],
             self::Video => [
-                FileUpload::make('content')
+                FileUpload::make('content.filename')
                     ->disk('public')
                     ->panelLayout('grid')
                     ->acceptedFileTypes(['video/*'])
-                    ->preserveFilenames()
+                    ->storeFileNamesIn('content.originalFilename')
                     ->directory(fn(RelationManager $livewire) => $livewire->getOwnerRecord()->id),
             ],
             default => []
@@ -37,10 +37,17 @@ enum BlockType: string implements HasLabel
         return __($this->name) ?? '';
     }
 
-    public function getContentPreview(string $content): string
+    public function getContentPreview(array $content): string
     {
-        $text = preg_replace('/<[^>]*>/', ' ', $content) ?? $content;
-        $text = html_entity_decode($text, ENT_QUOTES | ENT_HTML5, 'UTF-8');
-        return trim(preg_replace('/\s+/', ' ', $text) ?? $text);
+        if ($this === self::RichContent) {
+            $html = $content['html'];
+            $text = preg_replace('/<[^>]*>/', ' ', $html) ?? $html;
+            $text = html_entity_decode($text, ENT_QUOTES | ENT_HTML5, 'UTF-8');
+            return trim(preg_replace('/\s+/', ' ', $text) ?? $text);
+        }
+        return match ($this) {
+            self::Video => $content['originalFilename'],
+            default => ""
+        };
     }
 }
