@@ -30,8 +30,6 @@ const nav = computed(() => {
     return {
         prev,
         next,
-        hasPrev: prev?.state.openable,
-        hasNext: next?.state.openable,
         go: async (win) => {
             navigating.value = true;
             await mainStore.goToWindow(win.id, 2);
@@ -54,14 +52,14 @@ const nav = computed(() => {
             <div class="flex gap-4">
                 <button
                     class="rounded-full bg-white p-2 hover:bg-sky-300 disabled:opacity-50"
-                    :disabled="!nav.hasPrev"
+                    :disabled="!nav.prev"
                     @click="nav.go(nav.prev)"
                 >
                     <SvgIcon type="mdi" class="size-8" :path="mdiArrowLeft" />
                 </button>
                 <button
                     class="rounded-full bg-white p-2 hover:bg-sky-300 disabled:opacity-50"
-                    :disabled="!nav.hasNext"
+                    :disabled="!nav.next"
                     @click="nav.go(nav.next)"
                 >
                     <SvgIcon type="mdi" class="size-8" :path="mdiArrowRight" />
@@ -87,7 +85,7 @@ const nav = computed(() => {
                 </button>
                 <div
                     v-if="!windowState.openable"
-                    class="bg-sky-600 p-2 px-4 text-3xl text-white"
+                    class="bg-sky-600 p-2 px-4 text-center text-3xl text-white"
                 >
                     Tu pourras ouvrir cette fenêtre
                     {{ windowState.opensOn.fromNow() }}
