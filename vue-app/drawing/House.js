@@ -53,9 +53,9 @@ export class House extends THREE.Group {
                     const pivotY = (bounds.min.y + bounds.max.y) / 2;
                     geometry.translate(-pivotX, -pivotY, 0);
                     mesh.position.set(pivotX, pivotY, 0);
-                    const win =
-                        this.windows[windowId] ??
-                        this.store.initWindow(windowId);
+                    const win = this.windows[windowId] ?? {
+                        state: this.store.getWindowState(windowId),
+                    };
                     win[side] = mesh;
                     this.windows[windowId] = win;
                 }
@@ -107,19 +107,31 @@ export class House extends THREE.Group {
             txt.position.y = y;
             txt.position.z = 1;
             txt.color = 0x00000;
-            if (win.openable) {
-                txt.fontWeight = "bold";
-                if (win.isOpen) {
-                    txt.color = 0x0077dd;
-                } else {
-                    txt.color = 0xdd1144;
-                    txt.outlineColor = 0xffffdd;
-                    txt.outlineWidth = 2;
-                    txt.outlineBlur = "50%";
-                }
-            }
+
+            win.numberTxt = txt;
+
+            this.updateWindowNumber(win);
 
             this.root.add(txt);
         });
+    }
+
+    updateWindowNumber(win) {
+        const { openable, isOpen } = win.state;
+        if (!openable) {
+            return;
+        }
+        const txt = win.numberTxt;
+        txt.fontWeight = "bold";
+        txt.color = isOpen ? 0x0077dd : 0xdd1144;
+        txt.outlineColor = isOpen ? null : 0xffffdd;
+        txt.outlineWidth = isOpen ? null : 2;
+        txt.outlineBlur = isOpen ? null : "50%";
+    }
+
+    updateWindowState(winId) {
+        const win = this.windows[winId];
+        win.state = this.store.getWindowState(winId);
+        this.updateWindowNumber(win);
     }
 }

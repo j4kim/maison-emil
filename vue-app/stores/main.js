@@ -20,7 +20,7 @@ export const useMainStore = defineStore("main", () => {
     const month = (+import.meta.env.VITE_APP_CAL_MONTH ?? now.month()) - 1;
     const calStart = dayjs({ year, month });
 
-    function initWindow(winId) {
+    function getWindowState(winId) {
         const opensOn = calStart.clone().date(winId);
         return {
             opensOn,
@@ -62,7 +62,8 @@ export const useMainStore = defineStore("main", () => {
             .timeline()
             .add(scene.value.openWindow(winId))
             .add(scene.value.insideWindow(winId))
-            .then(() => openWindows.value.push(winId));
+            .then(() => openWindows.value.push(winId))
+            .then(() => scene.value.house.updateWindowState(winId));
     }
 
     return {
@@ -72,7 +73,7 @@ export const useMainStore = defineStore("main", () => {
         scene,
         openWindows,
         initialized,
-        initWindow,
+        getWindowState,
         initScene,
         isOpen,
         goToWindow,
