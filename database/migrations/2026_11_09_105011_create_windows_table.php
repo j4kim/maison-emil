@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('windows', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
-            $table->date('opens_on');
+            $table->smallInteger('number');
             $table->string('title')->nullable();
         });
     }

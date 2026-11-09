@@ -12,15 +12,15 @@ class WindowsTable
     {
         return $table
             ->columns([
-                TextColumn::make('id'),
-                TextColumn::make('opens_on')
-                    ->date("d.m.y")
-                    ->sortable(),
+                TextColumn::make('number'),
                 TextColumn::make('title')
                     ->searchable(),
                 TextColumn::make('blocks_count')
                     ->counts('blocks')
             ])
+            ->defaultSort('number')
+            ->reorderable('number')
+            ->paginated(false)
             ->filters([
                 //
             ])

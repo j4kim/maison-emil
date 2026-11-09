@@ -12,9 +12,7 @@ class WindowForm
     {
         return $schema
             ->components([
-                DatePicker::make('opens_on')
-                    ->disabled()
-                    ->required(),
+                TextInput::make('number')->disabled(),
                 TextInput::make('title'),
             ]);
     }
