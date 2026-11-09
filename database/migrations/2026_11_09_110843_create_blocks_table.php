@@ -17,6 +17,7 @@ return new class extends Migration
             $table->foreignId('window_id')->constrained();
             $table->string('type');
             $table->text('content')->nullable();
+            $table->integer('order')->nullable();
         });
     }
 

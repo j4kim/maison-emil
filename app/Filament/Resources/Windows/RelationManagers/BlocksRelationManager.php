@@ -58,6 +58,8 @@ class BlocksRelationManager extends RelationManager
                     })
                     ->limit(80),
             ])
+            ->reorderable('order')
+            ->defaultSort('order')
             ->filters([
                 //
             ])
