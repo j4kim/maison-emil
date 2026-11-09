@@ -1,0 +1,9 @@
+{
+    "window": "fenêtre",
+    "title": "titre",
+    "blocks_count": "blocs",
+    "content": "contenu",
+    "content.html": "contenu",
+    "content.filename": "fichier",
+    "number": "numéro"
+}

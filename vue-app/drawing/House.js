@@ -3,6 +3,7 @@ import { HOME_H, HOME_W, WIN_H, WIN_W } from "./Scene";
 import { SVGLoader } from "three/examples/jsm/Addons.js";
 import { Text } from "troika-three-text";
 import { getShutterData } from "./utils";
+import { useMainStore } from "../stores/main";
 
 export class House extends THREE.Group {
     constructor(svgUrl) {
@@ -11,6 +12,7 @@ export class House extends THREE.Group {
         this.windows = [];
         this.root = new THREE.Group();
         this.add(this.root);
+        this.store = useMainStore();
     }
 
     static async init(svgUrl) {
@@ -51,7 +53,10 @@ export class House extends THREE.Group {
                     const pivotY = (bounds.min.y + bounds.max.y) / 2;
                     geometry.translate(-pivotX, -pivotY, 0);
                     mesh.position.set(pivotX, pivotY, 0);
-                    const win = this.windows[windowId] ?? {};
+                    const win = this.windows[windowId] ?? {
+                        id: windowId,
+                        state: this.store.getWindowState(windowId),
+                    };
                     win[side] = mesh;
                     this.windows[windowId] = win;
                 }
@@ -96,15 +101,38 @@ export class House extends THREE.Group {
             const txt = new Text();
 
             txt.text = id;
-            txt.fontSize = 10;
+            txt.fontSize = 11;
             txt.anchorX = "center";
-            txt.anchorY = -WIN_H * 0.8;
+            txt.anchorY = -WIN_H * 0.75;
             txt.position.x = x;
             txt.position.y = y;
             txt.position.z = 1;
             txt.color = 0x00000;
 
+            win.numberTxt = txt;
+
+            this.updateWindowNumber(win);
+
             this.root.add(txt);
         });
+    }
+
+    updateWindowNumber(win) {
+        const { openable, isOpen } = win.state;
+        if (!openable) {
+            return;
+        }
+        const txt = win.numberTxt;
+        txt.fontWeight = "bold";
+        txt.color = isOpen ? 0x0077dd : 0xdd1144;
+        txt.outlineColor = isOpen ? null : 0xffffdd;
+        txt.outlineWidth = isOpen ? null : 2;
+        txt.outlineBlur = isOpen ? null : "50%";
+    }
+
+    updateWindowState(winId) {
+        const win = this.windows[winId];
+        win.state = this.store.getWindowState(winId);
+        this.updateWindowNumber(win);
     }
 }

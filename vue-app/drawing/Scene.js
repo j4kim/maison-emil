@@ -17,12 +17,18 @@ export class Scene {
     constructor(canvas) {
         this.canvas = canvas;
         this.scene = new THREE.Scene();
-        this.camera = new THREE.PerspectiveCamera(
-            75,
-            window.innerWidth / window.innerHeight,
-            0.1,
-            1000,
-        );
+        this.ratio = window.innerWidth / window.innerHeight;
+        let fov = 75;
+        if (this.ratio < 0.3) {
+            fov = 120;
+        } else if (this.ratio < 0.4) {
+            fov = 100;
+        } else if (this.ratio < 0.5) {
+            fov = 90;
+        } else if (this.ratio < 0.6) {
+            fov = 80;
+        }
+        this.camera = new THREE.PerspectiveCamera(fov, this.ratio, 0.1, 1000);
 
         this.renderer = new THREE.WebGLRenderer({ antialias: true, canvas });
         this.renderer.setSize(window.innerWidth, window.innerHeight);
@@ -82,10 +88,6 @@ export class Scene {
             .timeline({ defaults: { duration, ease } })
             .to(this.camera.position, { x, y, z }, 0)
             .to(this.camera.rotation, { x: 0 }, 0);
-    }
-
-    insideWindow(winId, duration = 2, ease = "power1.out") {
-        return this.focusWindow(winId, 20, duration, ease);
     }
 
     zoomOut(duration = 2, ease = "power1.inOut") {

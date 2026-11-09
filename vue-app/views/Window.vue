@@ -1,41 +1,107 @@
 <script setup>
-import { useRoute } from "vue-router";
+import { useRoute, useRouter } from "vue-router";
 import { useMainStore } from "../stores/main";
-import { ref } from "vue";
+import { computed } from "vue";
+import SvgIcon from "@jamescoyle/vue-icon";
+import { mdiArrowLeft, mdiArrowRight, mdiHome } from "@mdi/js";
+import WindowContent from "../components/WindowContent.vue";
+import { navigating } from "../router";
 
 const route = useRoute();
+const router = useRouter();
 const mainStore = useMainStore();
 
-const opening = ref(false);
+const winId = computed(() => +route.params.winId);
+
+const windowState = computed(() => mainStore.getWindowState(winId.value));
 
 async function open() {
-    opening.value = true;
-    await mainStore.openAndGoInsideWindow(+route.params.winId);
-    opening.value = false;
+    navigating.value = true;
+    await mainStore.openAndGoInsideWindow(winId.value);
+    navigating.value = false;
 }
+
+const nav = computed(() => {
+    const windows = mainStore.scene.house?.windows ?? [];
+    const prev = windows[winId.value - 1];
+    const next = windows[winId.value + 1];
+    return {
+        prev,
+        next,
+        go: async (win) => {
+            navigating.value = true;
+            router.push({ params: { winId: win.id } });
+            await mainStore.navigateFromTo(winId.value, win.id);
+            navigating.value = false;
+        },
+    };
+});
+
+const ratio = computed(() => mainStore.scene.ratio);
+const articleWidth = computed(
+    () => `${Math.min(100, (1 / ratio.value) * 100)}%`,
+);
 </script>
 
 <template>
     <div>
-        <div class="p-4">
+        <div class="fixed flex w-full items-center justify-between gap-4 p-4">
             <button
-                class="bg-white px-2 py-1 text-xl"
-                @click="$router.push({ name: 'home' })"
+                class="rounded-full bg-white p-2 hover:bg-sky-300"
+                @click="router.push({ name: 'home' })"
             >
-                retour
+                <SvgIcon type="mdi" class="size-12" :path="mdiHome" />
             </button>
+            <div class="flex gap-4">
+                <button
+                    class="rounded-full bg-white p-2 hover:bg-sky-300 disabled:pointer-events-none disabled:opacity-50"
+                    :disabled="!nav.prev || navigating"
+                    @click="nav.go(nav.prev)"
+                >
+                    <SvgIcon type="mdi" class="size-8" :path="mdiArrowLeft" />
+                </button>
+                <button
+                    class="rounded-full bg-white p-2 hover:bg-sky-300 disabled:pointer-events-none disabled:opacity-50"
+                    :disabled="!nav.next || navigating"
+                    @click="nav.go(nav.next)"
+                >
+                    <SvgIcon type="mdi" class="size-8" :path="mdiArrowRight" />
+                </button>
+            </div>
         </div>
-        <div v-if="mainStore.isOpen(+route.params.winId)">
-            <article class="prose-xl mx-auto max-w-4xl p-2">
-                <h1>Fenêtre {{ route.params.winId }}</h1>
+        <div v-show="mainStore.isOpen(winId) && !navigating">
+            <article
+                class="prose sm:prose-lg md:prose-xl mx-auto p-2 px-6 pt-28 lg:pt-6"
+                :style="{ maxWidth: articleWidth }"
+            >
+                <h3>Fenêtre {{ winId }}</h3>
+                <WindowContent :winId />
             </article>
         </div>
         <div
-            v-else-if="!opening"
-            class="flex h-dvh w-dvw items-center justify-center"
+            v-show="!mainStore.isOpen(winId) && !navigating"
+            class="flex h-dvh w-dvw flex-col items-center justify-center gap-8"
         >
-            <button class="bg-white px-2 py-1 text-6xl" @click="open">
+            <button
+                class="bg-white px-2 py-1 text-6xl hover:bg-sky-300 disabled:pointer-events-none disabled:opacity-50"
+                @click="open"
+                :disabled="!windowState.openable"
+            >
                 ouvrir
+            </button>
+            <div
+                v-if="!windowState.openable"
+                class="bg-sky-600 p-2 px-4 text-center text-3xl text-white"
+            >
+                Tu pourras ouvrir cette fenêtre
+                {{ windowState.opensOn.fromNow() }}
+            </div>
+            <button
+                v-if="!windowState.openable && mainStore.user"
+                class="bg-white px-2 py-1 text-xl hover:bg-sky-300"
+                @click="open"
+            >
+                ouvrir (admin)
             </button>
         </div>
     </div>
