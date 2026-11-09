@@ -9,6 +9,6 @@ class Window extends Model
 {
     public function blocks(): HasMany
     {
-        return $this->hasMany(Block::class);
+        return $this->hasMany(Block::class)->orderBy('order');
     }
 }
