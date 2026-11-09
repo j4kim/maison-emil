@@ -3,9 +3,7 @@ import { defineStore } from "pinia";
 import { ref } from "vue";
 import { Scene } from "../drawing/Scene";
 import gsap from "gsap";
-import dayjs from "dayjs";
-import objectSupport from "dayjs/plugin/objectSupport";
-dayjs.extend(objectSupport);
+import dayjs from "../plugins/dayjs";
 
 export const useMainStore = defineStore("main", () => {
     const user = ref(JSON.parse(document.body.dataset.user));

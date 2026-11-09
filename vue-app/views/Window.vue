@@ -1,7 +1,7 @@
 <script setup>
 import { useRoute } from "vue-router";
 import { useMainStore } from "../stores/main";
-import { ref } from "vue";
+import { computed, ref } from "vue";
 import SvgIcon from "@jamescoyle/vue-icon";
 import { mdiHome } from "@mdi/js";
 
@@ -9,6 +9,10 @@ const route = useRoute();
 const mainStore = useMainStore();
 
 const opening = ref(false);
+
+const windowState = computed(() =>
+    mainStore.getWindowState(+route.params.winId),
+);
 
 async function open() {
     opening.value = true;
@@ -21,7 +25,7 @@ async function open() {
     <div>
         <div class="absolute p-4">
             <button
-                class="rounded-full bg-white p-2"
+                class="rounded-full bg-white p-2 hover:bg-sky-300"
                 @click="$router.push({ name: 'home' })"
             >
                 <SvgIcon type="mdi" class="size-12" :path="mdiHome" />
@@ -34,11 +38,22 @@ async function open() {
         </div>
         <div
             v-else-if="!opening"
-            class="flex h-dvh w-dvw items-center justify-center"
+            class="flex h-dvh w-dvw flex-col items-center justify-center gap-8"
         >
-            <button class="bg-white px-2 py-1 text-6xl" @click="open">
+            <button
+                class="bg-white px-2 py-1 text-6xl hover:bg-sky-300 disabled:opacity-50"
+                @click="open"
+                :disabled="!windowState.openable"
+            >
                 ouvrir
             </button>
+            <div
+                v-if="!windowState.openable"
+                class="bg-sky-600 p-2 px-4 text-3xl text-white"
+            >
+                Tu pourras ouvrir cette fenêtre
+                {{ windowState.opensOn.fromNow() }}
+            </div>
         </div>
     </div>
 </template>
