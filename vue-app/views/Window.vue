@@ -32,7 +32,7 @@ const nav = computed(() => {
         next,
         go: async (win) => {
             navigating.value = true;
-            await mainStore.goToWindow(win.id, 2);
+            await mainStore.navigateFromTo(winId.value, win.id);
             router.push({ params: { winId: win.id } });
             navigating.value = false;
         },

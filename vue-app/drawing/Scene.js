@@ -84,10 +84,6 @@ export class Scene {
             .to(this.camera.rotation, { x: 0 }, 0);
     }
 
-    insideWindow(winId, duration = 2, ease = "power1.out") {
-        return this.focusWindow(winId, 20, duration, ease);
-    }
-
     zoomOut(duration = 2, ease = "power1.inOut") {
         const [x, y, z] = DEFAULT_CAMERA_POS;
         return gsap

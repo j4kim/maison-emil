@@ -45,8 +45,24 @@ export const useMainStore = defineStore("main", () => {
     async function goToWindow(winId, duration = 2) {
         await until(initialized).toBe(true);
         const tl = isOpen(winId)
-            ? scene.value.insideWindow(winId, duration)
+            ? scene.value.focusWindow(winId, true, duration)
             : scene.value.focusWindow(winId, false, duration);
+        return tl.then();
+    }
+
+    async function navigateFromTo(fromWinId, toWinId) {
+        await until(initialized).toBe(true);
+        const fromIsOpen = getWindowState(fromWinId).isOpen;
+        const toIsOpen = getWindowState(toWinId).isOpen;
+        const tl = gsap.timeline();
+        const stepDuration = 0.8;
+        if (fromIsOpen) {
+            tl.add(scene.value.focusWindow(fromWinId, false, stepDuration));
+        }
+        tl.add(scene.value.focusWindow(toWinId, false, stepDuration));
+        if (toIsOpen) {
+            tl.add(scene.value.focusWindow(toWinId, true, stepDuration));
+        }
         return tl.then();
     }
 
@@ -59,7 +75,7 @@ export const useMainStore = defineStore("main", () => {
         return gsap
             .timeline()
             .add(scene.value.openWindow(winId))
-            .add(scene.value.insideWindow(winId))
+            .add(scene.value.focusWindow(winId, true))
             .then(() => openWindows.value.push(winId))
             .then(() => scene.value.house.updateWindowState(winId));
     }
@@ -75,6 +91,7 @@ export const useMainStore = defineStore("main", () => {
         initScene,
         isOpen,
         goToWindow,
+        navigateFromTo,
         zoomOut,
         openAndGoInsideWindow,
     };
