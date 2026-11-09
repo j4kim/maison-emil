@@ -22,6 +22,11 @@ class WindowResource extends Resource
 
     protected static ?string $recordTitleAttribute = 'id';
 
+    public static function getModelLabel(): string
+    {
+        return __('window');
+    }
+
     public static function form(Schema $schema): Schema
     {
         return WindowForm::configure($schema);
