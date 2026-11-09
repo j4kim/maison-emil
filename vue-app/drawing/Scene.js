@@ -17,12 +17,18 @@ export class Scene {
     constructor(canvas) {
         this.canvas = canvas;
         this.scene = new THREE.Scene();
-        this.camera = new THREE.PerspectiveCamera(
-            75,
-            window.innerWidth / window.innerHeight,
-            0.1,
-            1000,
-        );
+        const ratio = window.innerWidth / window.innerHeight;
+        let fov = 75;
+        if (ratio < 0.3) {
+            fov = 120;
+        } else if (ratio < 0.4) {
+            fov = 100;
+        } else if (ratio < 0.5) {
+            fov = 90;
+        } else if (ratio < 0.6) {
+            fov = 80;
+        }
+        this.camera = new THREE.PerspectiveCamera(fov, ratio, 0.1, 1000);
 
         this.renderer = new THREE.WebGLRenderer({ antialias: true, canvas });
         this.renderer.setSize(window.innerWidth, window.innerHeight);
