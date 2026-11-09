@@ -2,14 +2,16 @@
 
 namespace App\Filament\Resources\Windows\RelationManagers;
 
+use App\Enums\BlockType;
 use Filament\Actions\BulkActionGroup;
 use Filament\Actions\CreateAction;
 use Filament\Actions\DeleteAction;
 use Filament\Actions\DeleteBulkAction;
 use Filament\Actions\EditAction;
-use Filament\Forms\Components\TextInput;
-use Filament\Forms\Components\Textarea;
+use Filament\Forms\Components\Select;
 use Filament\Resources\RelationManagers\RelationManager;
+use Filament\Schemas\Components\Grid;
+use Filament\Schemas\Components\Utilities\Get;
 use Filament\Schemas\Schema;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
@@ -22,10 +24,24 @@ class BlocksRelationManager extends RelationManager
     {
         return $schema
             ->components([
-                TextInput::make('type')
-                    ->required(),
-                Textarea::make('content')
-                    ->columnSpanFull(),
+                Select::make('type')
+                    ->options(BlockType::class)
+                    ->live()
+                    ->afterStateUpdated(
+                        fn(Select $component) => $component
+                            ->getContainer()
+                            ->getComponent('dynamicTypeFields')
+                            ->getChildSchema()
+                            ->fill()
+                    ),
+                Grid::make()
+                    ->schema(function (Get $get): array {
+                        /** @var BlockType $blockType */
+                        $blockType = $get('type');
+                        return $blockType?->getSchema() ?? [];
+                    })
+                    ->columnSpanFull()
+                    ->key('dynamicTypeFields'),
             ]);
     }
 
