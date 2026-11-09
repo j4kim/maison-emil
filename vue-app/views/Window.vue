@@ -1,28 +1,25 @@
 <script setup>
 import { useRoute, useRouter } from "vue-router";
 import { useMainStore } from "../stores/main";
-import { computed, ref } from "vue";
+import { computed } from "vue";
 import SvgIcon from "@jamescoyle/vue-icon";
 import { mdiArrowLeft, mdiArrowRight, mdiHome } from "@mdi/js";
 import WindowContent from "../components/WindowContent.vue";
+import { navigating } from "../router";
 
 const route = useRoute();
 const router = useRouter();
 const mainStore = useMainStore();
-
-const opening = ref(false);
 
 const winId = computed(() => +route.params.winId);
 
 const windowState = computed(() => mainStore.getWindowState(winId.value));
 
 async function open() {
-    opening.value = true;
+    navigating.value = true;
     await mainStore.openAndGoInsideWindow(winId.value);
-    opening.value = false;
+    navigating.value = false;
 }
-
-const navigating = ref(false);
 
 const nav = computed(() => {
     const windows = mainStore.scene.house.windows;
