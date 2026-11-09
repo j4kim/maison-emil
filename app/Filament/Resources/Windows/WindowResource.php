@@ -5,6 +5,7 @@ namespace App\Filament\Resources\Windows;
 use App\Filament\Resources\Windows\Pages\CreateWindow;
 use App\Filament\Resources\Windows\Pages\EditWindow;
 use App\Filament\Resources\Windows\Pages\ListWindows;
+use App\Filament\Resources\Windows\RelationManagers\BlocksRelationManager;
 use App\Filament\Resources\Windows\Schemas\WindowForm;
 use App\Filament\Resources\Windows\Tables\WindowsTable;
 use App\Models\Window;
@@ -40,7 +41,7 @@ class WindowResource extends Resource
     public static function getRelations(): array
     {
         return [
-            //
+            BlocksRelationManager::class
         ];
     }
 
