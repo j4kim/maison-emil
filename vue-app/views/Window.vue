@@ -22,7 +22,7 @@ async function open() {
 }
 
 const nav = computed(() => {
-    const windows = mainStore.scene.house.windows;
+    const windows = mainStore.scene.house?.windows ?? [];
     const prev = windows[winId.value - 1];
     const next = windows[winId.value + 1];
     return {
@@ -54,14 +54,14 @@ const articleWidth = computed(
             </button>
             <div class="flex gap-4">
                 <button
-                    class="rounded-full bg-white p-2 hover:bg-sky-300 disabled:opacity-50"
+                    class="rounded-full bg-white p-2 hover:bg-sky-300 disabled:pointer-events-none disabled:opacity-50"
                     :disabled="!nav.prev || navigating"
                     @click="nav.go(nav.prev)"
                 >
                     <SvgIcon type="mdi" class="size-8" :path="mdiArrowLeft" />
                 </button>
                 <button
-                    class="rounded-full bg-white p-2 hover:bg-sky-300 disabled:opacity-50"
+                    class="rounded-full bg-white p-2 hover:bg-sky-300 disabled:pointer-events-none disabled:opacity-50"
                     :disabled="!nav.next || navigating"
                     @click="nav.go(nav.next)"
                 >
@@ -83,7 +83,7 @@ const articleWidth = computed(
             class="flex h-dvh w-dvw flex-col items-center justify-center gap-8"
         >
             <button
-                class="bg-white px-2 py-1 text-6xl hover:bg-sky-300 disabled:opacity-50"
+                class="bg-white px-2 py-1 text-6xl hover:bg-sky-300 disabled:pointer-events-none disabled:opacity-50"
                 @click="open"
                 :disabled="!windowState.openable"
             >
@@ -96,6 +96,13 @@ const articleWidth = computed(
                 Tu pourras ouvrir cette fenêtre
                 {{ windowState.opensOn.fromNow() }}
             </div>
+            <button
+                v-if="!windowState.openable && mainStore.user"
+                class="bg-white px-2 py-1 text-xl hover:bg-sky-300"
+                @click="open"
+            >
+                ouvrir (admin)
+            </button>
         </div>
     </div>
 </template>
