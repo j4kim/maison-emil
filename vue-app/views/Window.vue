@@ -72,37 +72,33 @@ const articleWidth = computed(
                 </button>
             </div>
         </div>
-        <template v-if="!navigating">
-            <div v-if="mainStore.isOpen(winId)">
-                <article
-                    class="prose sm:prose-lg md:prose-xl mx-auto p-2 px-6 pt-28 lg:pt-6"
-                    :style="{ maxWidth: articleWidth }"
-                >
-                    <h3>Fenêtre {{ winId }}</h3>
-                    <Suspense>
-                        <WindowContent :winId />
-                    </Suspense>
-                </article>
-            </div>
-            <div
-                v-else-if="!opening"
-                class="flex h-dvh w-dvw flex-col items-center justify-center gap-8"
+        <div v-show="mainStore.isOpen(winId) && !navigating">
+            <article
+                class="prose sm:prose-lg md:prose-xl mx-auto p-2 px-6 pt-28 lg:pt-6"
+                :style="{ maxWidth: articleWidth }"
             >
-                <button
-                    class="bg-white px-2 py-1 text-6xl hover:bg-sky-300 disabled:opacity-50"
-                    @click="open"
-                    :disabled="!windowState.openable"
-                >
-                    ouvrir
-                </button>
-                <div
-                    v-if="!windowState.openable"
-                    class="bg-sky-600 p-2 px-4 text-center text-3xl text-white"
-                >
-                    Tu pourras ouvrir cette fenêtre
-                    {{ windowState.opensOn.fromNow() }}
-                </div>
+                <h3>Fenêtre {{ winId }}</h3>
+                <WindowContent :winId />
+            </article>
+        </div>
+        <div
+            v-show="!mainStore.isOpen(winId) && !navigating"
+            class="flex h-dvh w-dvw flex-col items-center justify-center gap-8"
+        >
+            <button
+                class="bg-white px-2 py-1 text-6xl hover:bg-sky-300 disabled:opacity-50"
+                @click="open"
+                :disabled="!windowState.openable"
+            >
+                ouvrir
+            </button>
+            <div
+                v-if="!windowState.openable"
+                class="bg-sky-600 p-2 px-4 text-center text-3xl text-white"
+            >
+                Tu pourras ouvrir cette fenêtre
+                {{ windowState.opensOn.fromNow() }}
             </div>
-        </template>
+        </div>
     </div>
 </template>
